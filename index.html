@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌐 我的个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0a0e1a;
+      --bg-card: #111827;
+      --bg-card-hover: #1a2235;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.18);
+      --text-primary: #f0f4ff;
+      --text-secondary: #8b9ab5;
+      --text-muted: #4a5568;
+      --accent-ai: #6366f1;
+      --accent-video: #ec4899;
+      --accent-tool: #10b981;
+      --accent-finance: #f59e0b;
+      --accent-content: #3b82f6;
+      --accent-study: #8b5cf6;
+      --accent-download: #06b6d4;
+      --accent-music: #f43f5e;
+      --accent-other: #64748b;
+      --glow-other: rgba(100, 116, 139, 0.15);
+      --accent-youtube: #ff4757;
+      --accent-government: #1e40af;
+      --accent-design: #a855f7;
+      --accent-shopping: #f97316;
+      --glow-ai: rgba(99,102,241,0.15);
+      --glow-video: rgba(236,72,153,0.15);
+      --glow-tool: rgba(16,185,129,0.15);
+      --glow-finance: rgba(245,158,11,0.15);
+      --glow-content: rgba(59,130,246,0.15);
+      --glow-study: rgba(139,92,246,0.15);
+      --glow-download: rgba(6,182,212,0.15);
+      --glow-music: rgba(244,63,94,0.15);
+      --glow-youtube: rgba(255, 71, 87, 0.15);
+      --glow-government: rgba(30, 64, 175, 0.15);
+      --glow-design: rgba(168, 85, 247, 0.15);
+      --glow-shopping: rgba(249, 115, 22, 0.15);
+    }
+
+    /*
+     * How to add a new category:
+     * 1. Add CSS variables for accent and glow colors in :root above.
+     * 2. Add a button in filter-row div (hidden) with data-cat="newcat".
+     * 3. Add a sidebar category link in .sidebar with data-cat="newcat".
+     * 4. Add entry in categoryDisplayNames object in JavaScript.
+     * 5. Add a new <section class="section cat-newcat" data-section="newcat"> with cards.
+     */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(99,102,241,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(236,72,153,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(16,185,129,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto 0 360px;
+      width: calc(100% - 360px);
+      padding: 40px 24px 80px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 50px 20px 40px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #a5b4fc;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #e2e8ff 0%, #a5b4fc 40%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+
+    .header-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a5b4fc, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Search bar */
+    .search-wrap {
+      max-width: 1000px;
+      margin: 0 auto 56px;
+      position: relative;
+      width: 90%;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 14px 20px 14px 48px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    #search::placeholder { color: var(--text-muted); }
+    #search:focus {
+      border-color: rgba(99,102,241,0.5);
+      background: rgba(99,102,241,0.05);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+    }
+
+    /* Category filter */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .filter-btn.active {
+      background: rgba(99,102,241,0.2);
+      border-color: rgba(99,102,241,0.5);
+      color: #a5b4fc;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 48px;
+      transition: opacity 0.3s ease;
+      width: 100%;
+    }
+
+    .section.hidden { display: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .section-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .section-count {
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(220px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: visible;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: inherit;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    /* Per-category glow */
+    .cat-ai .card::before { background: var(--glow-ai); }
+    .cat-video .card::before { background: var(--glow-video); }
+    .cat-tool .card::before { background: var(--glow-tool); }
+    .cat-finance .card::before { background: var(--glow-finance); }
+    .cat-content .card::before { background: var(--glow-content); }
+    .cat-study .card::before { background: var(--glow-study); }
+    .cat-download .card::before { background: var(--glow-download); }
+    .cat-music .card::before { background: var(--glow-music); }
+    .cat-youtube .card::before { background: var(--glow-youtube); }
+    .cat-government .card::before { background: var(--glow-government); }
+    .cat-design .card::before { background: var(--glow-design); }
+    .cat-shopping .card::before { background: var(--glow-shopping); }
+    .cat-other .card::before { background: var(--glow-other); }
+
+    .card-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cat-ai .card-ico { background: rgba(99,102,241,0.15); }
+    .cat-video .card-ico { background: rgba(236,72,153,0.15); }
+    .cat-tool .card-ico { background: rgba(16,185,129,0.15); }
+    .cat-finance .card-ico { background: rgba(245,158,11,0.15); }
+    .cat-content .card-ico { background: rgba(59,130,246,0.15); }
+    .cat-study .card-ico { background: rgba(139,92,246,0.15); }
+    .cat-download .card-ico { background: rgba(6,182,212,0.15); }
+    .cat-music .card-ico { background: rgba(244,63,94,0.15); }
+    .cat-other .card-ico { background: rgba(100,116,139,0.15); }
+    .cat-youtube .card-ico { background: rgba(255, 71, 87, 0.15); }
+    .cat-government .card-ico { background: rgba(30, 64, 175, 0.15); }
+    .cat-design .card-ico { background: rgba(168, 85, 247, 0.15); }
+    .cat-shopping .card-ico { background: rgba(249, 115, 22, 0.15); }
+
+    .card-info {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-name {
+      font-size: 13.5px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4;
+    }
+
+    .card-domain {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-arrow {
+      color: var(--text-muted);
+      font-size: 14px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Subsection styles for collapsible folders */
+    .subsection {
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .subsection-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+    .subsection-header:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: var(--border-hover);
+    }
+    .subsection-arrow {
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+      width: 16px;
+      text-align: center;
+    }
+    .subsection-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    .subsection-count {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text-muted);
+    }
+    .subsection-content {
+      margin-top: 8px;
+    }
+
+    /* Hidden card for search */
+    .card.search-hidden { display: none; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer span { opacity: 0.5; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+    @media (max-width: 1200px) {
+      .cards-grid { grid-template-columns: repeat(4, minmax(220px, 1fr)); }
+    }
+
+
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .header-stats { gap: 24px; }
+    }
+
+    /* Sidebar styles */
+    .main-layout {
+      /* margin and width removed as container already shifted */
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 40px 20px 20px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .sidebar-category {
+      display: block;
+      padding: 10px 16px;
+      margin-bottom: 8px;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .sidebar-category:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .sidebar-category.active {
+      background: rgba(99,102,241,0.1);
+      color: #a5b4fc;
+      border-left: 3px solid var(--accent-ai);
+    }
+
+    .sidebar-category .count {
+      float: right;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Card category tag */
+    .card-category-tag {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+      z-index: 2;
+    }
+    .card-category-tag:hover {
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .card-category-dropdown {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 0;
+      min-width: 140px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+      pointer-events: none;
+    }
+    .card-category-dropdown.show {
+      display: block;
+    }
+    .card-category-dropdown a {
+      display: block;
+      padding: 8px 16px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.2s;
+      pointer-events: auto;
+    }
+    .card-category-dropdown a:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    /* Elevate card when dropdown is shown */
+    .card.show-dropdown {
+      z-index: 100;
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .main-layout {
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        margin-bottom: 32px;
+        z-index: auto;
+        border-radius: 16px;
+      }
+
+      .main-content {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+
+      .container {
+        padding: 40px 24px 80px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+      }
+    }
+
+    /* Ensure foldable headers match 5-card width */
+    .subsection-header {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Ensure subsection content and cards grid have proper width */
+    .subsection-content {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .subsection .cards-grid {
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="header-badge">✦ PERSONAL HOMEPAGE</div>
+    <h1>Rex Websites</h1>
+    <div class="header-stats">
+      <div class="stat">
+        <div class="stat-number" id="totalCount">46</div>
+        <div class="stat-label">网站总数</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">12</div>
+        <div class="stat-label">分类</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="搜索网站名称或地址..." autocomplete="off" />
+  </div>
+
+  <div class="main-layout">
+    <div class="sidebar">
+      <a class="sidebar-category active" data-cat="all">🌐 全部 <span class="count" id="sidebar-count-all"></span></a>
+      <a class="sidebar-category" data-cat="ai">🤖 AI工具 <span class="count" id="sidebar-count-ai"></span></a>
+      <a class="sidebar-category" data-cat="video">🎬 视频创作 <span class="count" id="sidebar-count-video"></span></a>
+      <a class="sidebar-category" data-cat="content">📺 内容平台 <span class="count" id="sidebar-count-content"></span></a>
+      <a class="sidebar-category" data-cat="tool">🛠️ 实用工具 <span class="count" id="sidebar-count-tool"></span></a>
+      <a class="sidebar-category" data-cat="download">⬇️ 下载资源 <span class="count" id="sidebar-count-download"></span></a>
+      <a class="sidebar-category" data-cat="finance">💹 金融投资 <span class="count" id="sidebar-count-finance"></span></a>
+      <a class="sidebar-category" data-cat="study">📚 学习知识 <span class="count" id="sidebar-count-study"></span></a>
+      <a class="sidebar-category" data-cat="music">🎵 音乐娱乐 <span class="count" id="sidebar-count-music"></span></a>
+      <a class="sidebar-category" data-cat="government">🏛️ 政务办公 <span class="count" id="sidebar-count-government"></span></a>
+      <a class="sidebar-category" data-cat="design">🎨 设计素材 <span class="count" id="sidebar-count-design"></span></a>
+      <a class="sidebar-category" data-cat="shopping">🛍️ 购物消费 <span class="count" id="sidebar-count-shopping"></span></a>
+      <a class="sidebar-category" data-cat="other">📌 其他 <span class="count" id="sidebar-count-other"></span></a>
+      <a class="sidebar-category" data-cat="youtube">🎥 Youtube素材 <span class="count" id="sidebar-count-youtube"></span></a>
+    </div>
+    <div class="main-content">
+      <!-- Category filters (hidden) -->
+      <div class="filter-row" id="filterRow" style="display: none;">
+    <button class="filter-btn active" data-cat="all">🌐 全部</button>
+    <button class="filter-btn" data-cat="ai">🤖 AI工具</button>
+    <button class="filter-btn" data-cat="video">🎬 视频创作</button>
+    <button class="filter-btn" data-cat="content">📺 内容平台</button>
+    <button class="filter-btn" data-cat="tool">🛠️ 实用工具</button>
+    <button class="filter-btn" data-cat="download">⬇️ 下载资源</button>
+    <button class="filter-btn" data-cat="finance">💹 金融投资</button>
+    <button class="filter-btn" data-cat="study">📚 学习知识</button>
+    <button class="filter-btn" data-cat="music">🎵 音乐娱乐</button>
+    <button class="filter-btn" data-cat="government">🏛️ 政务办公</button>
+    <button class="filter-btn" data-cat="design">🎨 设计素材</button>
+    <button class="filter-btn" data-cat="shopping">🛍️ 购物消费</button>
+    <button class="filter-btn" data-cat="other">📌 其他</button>
+    <button class="filter-btn" data-cat="youtube">🎥 Youtube素材</button>
+  </div>
+
+  <!-- ============ AI TOOLS ============ -->
+  <section class="section cat-ai" data-section="ai">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-ai)"></div>
+      <span class="section-title" style="color:#a5b4fc">🤖 AI 工具</span>
+      <span class="section-count" id="count-ai"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://aistudio.google.com/prompts/new_chat" target="_blank">
+        <div class="card-ico">✨</div>
+        <div class="card-info">
+          <div class="card-name">Google AI Studio</div>
+          <div class="card-domain">aistudio.google.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://fal.ai/models" target="_blank">
+        <div class="card-ico">⚡</div>
+        <div class="card-info">
+          <div class="card-name">Model Gallery - fal.ai</div>
+          <div class="card-domain">fal.ai</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://huggingface.co/spaces/tori29umai/Qwen-Image-2509-MultipleAngles" target="_blank">
+        <div class="card-ico">🤗</div>
+        <div class="card-info">
+          <div class="card-name">Qwen Image - Hugging Face</div>
+          <div class="card-domain">huggingface.co</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.lovart.ai/zh/home" target="_blank">
+        <div class="card-ico">🎨</div>
+        <div class="card-info">
+          <div class="card-name">Lovart - 全球首个设计智能体</div>
+          <div class="card-domain">lovart.ai</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.oiioii.ai/space/00721132-792d-448c-9f3d-0fb63c91aaf5" target="_blank">
+        <div class="card-ico">🌀</div>
+        <div class="card-info">
+          <div class="card-name">OiiOii.ai - AI动画团队</div>
+          <div class="card-domain">oiioii.ai</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://jimeng.jianying.com/ai-tool/home" target="_blank">
+        <div class="card-ico">🌌</div>
+        <div class="card-info">
+          <div class="card-name">即梦AI - 一站式AI创作平台</div>
+          <div class="card-domain">jimeng.jianying.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://app.klingai.com/cn/" target="_blank">
+        <div class="card-ico">🚀</div>
+        <div class="card-info">
+          <div class="card-name">可灵 AI - AI创意生产力平台</div>
+          <div class="card-domain">app.klingai.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://zhiwen.xfyun.cn/" target="_blank">
+        <div class="card-ico">📄</div>
+        <div class="card-info">
+          <div class="card-name">讯飞智文 - AI生成PPT/Word</div>
+          <div class="card-domain">zhiwen.xfyun.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://console.volcengine.com/ark/region:ark+cn-beijing/model" target="_blank">
+        <div class="card-ico">🔥</div>
+        <div class="card-info">
+          <div class="card-name">火山方舟管理控制台</div>
+          <div class="card-domain">console.volcengine.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="http://localhost/apps" target="_blank">
+        <div class="card-ico">🏠</div>
+        <div class="card-info">
+          <div class="card-name">工作室 - Dify (本地)</div>
+          <div class="card-domain">localhost</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://mastersgo.cc/" target="_blank">
+        <div class="card-ico">📊</div>
+        <div class="card-info">
+          <div class="card-name">超级挖掘机 - AI智能投研</div>
+          <div class="card-domain">mastersgo.cc</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ VIDEO CREATION ============ -->
+  <section class="section cat-video" data-section="video">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-video)"></div>
+      <span class="section-title" style="color:#f9a8d4">🎬 视频创作</span>
+      <span class="section-count" id="count-video"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://www.vidu.studio/create/character2video" target="_blank">
+        <div class="card-ico">🎭</div>
+        <div class="card-info">
+          <div class="card-name">Create AI Videos - Vidu AI</div>
+          <div class="card-domain">vidu.studio</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.vidu.com/create/character2video" target="_blank">
+        <div class="card-ico">🎞️</div>
+        <div class="card-info">
+          <div class="card-name">Reference to Video - Vidu</div>
+          <div class="card-domain">vidu.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.bilibili.com/video/BV1QwYNzAEab/" target="_blank">
+        <div class="card-ico">📹</div>
+        <div class="card-info">
+          <div class="card-name">AI剪辑-按脚本快速成片 B站</div>
+          <div class="card-domain">bilibili.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://c2psjdxqac.feishu.cn/docx/YiCid0qMUorfdex5sM8cks1tnbe" target="_blank">
+        <div class="card-ico">🗒️</div>
+        <div class="card-info">
+          <div class="card-name">AI新视界实验室 - 飞书文档</div>
+          <div class="card-domain">feishu.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://unwatermark.ai/video-watermark-remover/" target="_blank">
+        <div class="card-ico">🚿</div>
+        <div class="card-info">
+          <div class="card-name">Remove Watermark From Video</div>
+          <div class="card-domain">unwatermark.ai</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://ezremove.ai/zh/video-watermark-remover/" target="_blank">
+        <div class="card-ico">✂️</div>
+        <div class="card-info">
+          <div class="card-name">免费在线视频去水印</div>
+          <div class="card-domain">ezremove.ai</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://ezgif.com/optimize" target="_blank">
+        <div class="card-ico">🖼️</div>
+        <div class="card-info">
+          <div class="card-name">Animated GIF Optimizer</div>
+          <div class="card-domain">ezgif.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.watermarkremover.io/zh" target="_blank">
+        <div class="card-ico">🔮</div>
+        <div class="card-info">
+          <div class="card-name">Watermark Remover - AI去图片水印</div>
+          <div class="card-domain">watermarkremover.io</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTENT PLATFORMS ============ -->
+  <section class="section cat-content" data-section="content">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-content)"></div>
+      <span class="section-title" style="color:#93c5fd">📺 内容平台</span>
+      <span class="section-count" id="count-content"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://mp.v.qq.com/homepage" target="_blank">
+        <div class="card-ico">📡</div>
+        <div class="card-info">
+          <div class="card-name">腾讯视频创作平台</div>
+          <div class="card-domain">mp.v.qq.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://mp.iqiyi.com/knowledge/index" target="_blank">
+        <div class="card-ico">💡</div>
+        <div class="card-info">
+          <div class="card-name">爱奇艺iQ号 - 爱创作</div>
+          <div class="card-domain">mp.iqiyi.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://om.youku.com/view/main/index?openCategory=177" target="_blank">
+        <div class="card-ico">🎥</div>
+        <div class="card-info">
+          <div class="card-name">优酷内容开放平台</div>
+          <div class="card-domain">om.youku.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.iyf.tv/" target="_blank">
+        <div class="card-ico">🌊</div>
+        <div class="card-info">
+          <div class="card-name">爱壹帆 - 海量高清视频</div>
+          <div class="card-domain">iyf.tv</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://x.com/home" target="_blank">
+        <div class="card-ico">𝕏</div>
+        <div class="card-info">
+          <div class="card-name">X (Twitter) 首页</div>
+          <div class="card-domain">x.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://complexly.com/" target="_blank">
+        <div class="card-ico">🌍</div>
+        <div class="card-info">
+          <div class="card-name">Complexly - 科普内容机构</div>
+          <div class="card-domain">complexly.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://quaily.com/" target="_blank">
+        <div class="card-ico">📰</div>
+        <div class="card-info">
+          <div class="card-name">Quaily - AI Newsletter</div>
+          <div class="card-domain">quaily.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.flipradio.club/" target="_blank">
+        <div class="card-ico">📻</div>
+        <div class="card-info">
+          <div class="card-name">翻转电台 Flipradio</div>
+          <div class="card-domain">flipradio.club</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.chilam.club/" target="_blank">
+        <div class="card-ico">🏮</div>
+        <div class="card-info">
+          <div class="card-name">Chilam Club</div>
+          <div class="card-domain">chilam.club</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ TOOLS ============ -->
+  <section class="section cat-tool" data-section="tool">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-tool)"></div>
+      <span class="section-title" style="color:#6ee7b7">🛠️ 实用工具</span>
+      <span class="section-count" id="count-tool"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://lzltool.cn/" target="_blank">
+        <div class="card-ico">⚙️</div>
+        <div class="card-info">
+          <div class="card-name">LZL在线工具箱</div>
+          <div class="card-domain">lzltool.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://tools.miku.ac/" target="_blank">
+        <div class="card-ico">🧰</div>
+        <div class="card-info">
+          <div class="card-name">MikuTools - 轻量工具集合</div>
+          <div class="card-domain">tools.miku.ac</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.baominggongju.com/manage" target="_blank">
+        <div class="card-ico">📋</div>
+        <div class="card-info">
+          <div class="card-name">报名工具 - 活动表单收款</div>
+          <div class="card-domain">baominggongju.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.xinzhiyun.net/User/Center/index" target="_blank">
+        <div class="card-ico">☁️</div>
+        <div class="card-info">
+          <div class="card-name">新知云</div>
+          <div class="card-domain">xinzhiyun.net</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="http://zwfw.hubei.gov.cn/webview/apply/sbIndex.html" target="_blank">
+        <div class="card-ico">🏛️</div>
+        <div class="card-info">
+          <div class="card-name">湖北政务服务网</div>
+          <div class="card-domain">zwfw.hubei.gov.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.nbfox.com/" target="_blank">
+        <div class="card-ico">🖼️</div>
+        <div class="card-info">
+          <div class="card-name">麦田艺术 - 高清名画免费下载</div>
+          <div class="card-domain">nbfox.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://bookfere.com/" target="_blank">
+        <div class="card-ico">📖</div>
+        <div class="card-info">
+          <div class="card-name">书伴 - 你的电子书伴侣</div>
+          <div class="card-domain">bookfere.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD & RESOURCES ============ -->
+  <section class="section cat-download" data-section="download">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-download)"></div>
+      <span class="section-title" style="color:#67e8f9">⬇️ 下载与资源</span>
+      <span class="section-count" id="count-download"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://downr.org/" target="_blank">
+        <div class="card-ico">⬇️</div>
+        <div class="card-info">
+          <div class="card-name">Downr - 免费视频下载器</div>
+          <div class="card-domain">downr.org</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://downsub.com/" target="_blank">
+        <div class="card-ico">💬</div>
+        <div class="card-info">
+          <div class="card-name">DownSub - 字幕下载</div>
+          <div class="card-domain">downsub.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://pan168.cn/doco" target="_blank">
+        <div class="card-ico">🎬</div>
+        <div class="card-info">
+          <div class="card-name">夸克资源吧 - 纪录片频道</div>
+          <div class="card-domain">pan168.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://xn--mes358aby2apfg.com/#/plan/5" target="_blank">
+        <div class="card-ico">✈️</div>
+        <div class="card-info">
+          <div class="card-name">赔钱机场 (VPN)</div>
+          <div class="card-domain">机场服务</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ FINANCE ============ -->
+  <section class="section cat-finance" data-section="finance">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-finance)"></div>
+      <span class="section-title" style="color:#fcd34d">💹 金融投资</span>
+      <span class="section-count" id="count-finance"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://quote.eastmoney.com/globalfuture/GC00Y.html" target="_blank">
+        <div class="card-ico">🥇</div>
+        <div class="card-info">
+          <div class="card-name">COMEX黄金(GC00Y) - 东方财富</div>
+          <div class="card-domain">quote.eastmoney.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ STUDY & KNOWLEDGE ============ -->
+  <section class="section cat-study" data-section="study">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-study)"></div>
+      <span class="section-title" style="color:#c4b5fd">📚 学习与知识</span>
+      <span class="section-count" id="count-study"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://www.icourse163.org/learn/NJU-1449998166" target="_blank">
+        <div class="card-ico">🦕</div>
+        <div class="card-info">
+          <div class="card-name">古生物学 - 中国大学MOOC</div>
+          <div class="card-domain">icourse163.org</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://ieltscat.xdf.cn/mock?source=1" target="_blank">
+        <div class="card-ico">📝</div>
+        <div class="card-info">
+          <div class="card-name">新东方雅思 - 模考</div>
+          <div class="card-domain">ieltscat.xdf.cn</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.historylines.net/history/timeline_simplifiedchinese.html" target="_blank">
+        <div class="card-ico">🗺️</div>
+        <div class="card-info">
+          <div class="card-name">世界历史年表（中英对照）</div>
+          <div class="card-domain">historylines.net</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.usgs.gov/" target="_blank">
+        <div class="card-ico">🌋</div>
+        <div class="card-info">
+          <div class="card-name">USGS - 美国地质勘探局</div>
+          <div class="card-domain">usgs.gov</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.zhihu.com/question/275244312/answer/560901930" target="_blank">
+        <div class="card-ico">🌌</div>
+        <div class="card-info">
+          <div class="card-name">人类是宇宙最高等文明？ - 知乎</div>
+          <div class="card-domain">zhihu.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ MUSIC & ENTERTAINMENT ============ -->
+  <section class="section cat-music" data-section="music">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-music)"></div>
+      <span class="section-title" style="color:#fda4af">🎵 音乐与娱乐</span>
+      <span class="section-count" id="count-music"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+
+      <a class="card" href="https://suno.com/create?wid=default" target="_blank">
+        <div class="card-ico">🎶</div>
+        <div class="card-info">
+          <div class="card-name">Suno - AI Music Creator</div>
+          <div class="card-domain">suno.com</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a class="card" href="https://www.albumoftheyear.org/" target="_blank">
+        <div class="card-ico">🏆</div>
+        <div class="card-info">
+          <div class="card-name">Album of The Year - 音乐排行</div>
+          <div class="card-domain">albumoftheyear.org</div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- ============ GOVERNMENT ============ -->
+  <section class="section cat-government" data-section="government">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-government)"></div>
+      <span class="section-title" style="color:#a5b4fc">🏛️ 政务办公</span>
+      <span class="section-count" id="count-government"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+      <!-- 暂无网站 -->
+    </div>
+  </section>
+
+  <!-- ============ DESIGN MATERIALS ============ -->
+  <section class="section cat-design" data-section="design">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-design)"></div>
+      <span class="section-title" style="color:#a5b4fc">🎨 设计素材</span>
+      <span class="section-count" id="count-design"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+      <!-- 暂无网站 -->
+    </div>
+  </section>
+
+  <!-- ============ SHOPPING ============ -->
+  <section class="section cat-shopping" data-section="shopping">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-shopping)"></div>
+      <span class="section-title" style="color:#a5b4fc">🛍️ 购物消费</span>
+      <span class="section-count" id="count-shopping"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+      <!-- 暂无网站 -->
+    </div>
+  </section>
+
+  <!-- ============ OTHER ============ -->
+  <section class="section cat-other" data-section="other">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-other)"></div>
+      <span class="section-title" style="color:#a5b4fc">📌 其他</span>
+      <span class="section-count" id="count-other"></span>
+      <div class="section-line"></div>
+    </div>
+    <div class="cards-grid">
+      <!-- 暂无网站 -->
+    </div>
+  </section>
+  <!-- ============ YOUTUBE MATERIALS ============ -->
+  <section class="section cat-youtube" data-section="youtube">
+    <div class="section-header">
+      <div class="section-dot" style="background:var(--accent-youtube)"></div>
+      <span class="section-title" style="color:#ff6b6b">🎥 Youtube素材</span>
+      <span class="section-count" id="count-youtube"></span>
+      <div class="section-line"></div>
+    </div>
+    <!-- Subsection: 3D建模解释 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('3D建模解释')">
+        <div class="subsection-arrow" id="arrow-3D建模解释">▶</div>
+        <span class="subsection-title">3D建模解释</span>
+        <span class="subsection-count">2</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-3D建模解释" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@Deconstructed_Animations" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Deconstructed</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@JaredOwen/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Jared Owen</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: BattleBots -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('BattleBots')">
+        <div class="subsection-arrow" id="arrow-BattleBots">▶</div>
+        <span class="subsection-title">BattleBots</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-BattleBots" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@BattleBots" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">BattleBots</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 儿童动画-休闲 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('儿童动画-休闲')">
+        <div class="subsection-arrow" id="arrow-儿童动画-休闲">▶</div>
+        <span class="subsection-title">儿童动画-休闲</span>
+        <span class="subsection-count">3</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-儿童动画-休闲" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@genkipark/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Genki Park</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@kangaroobeachofficial/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Kangaroo Beach Official</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@SuperSimpleTV/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Super Simple TV - Kids Shows & Cartoons</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 儿童百科 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('儿童百科')">
+        <div class="subsection-arrow" id="arrow-儿童百科">▶</div>
+        <span class="subsection-title">儿童百科</span>
+        <span class="subsection-count">9</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-儿童百科" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@FiveMinuteDocumentaries" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Five Minute Documentaries</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@FreeSchool/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Free School</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@fuseschool/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">FuseSchool - Global Education</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@HappyLearningENG/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Happy Learning English</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@howitsmade100" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">How It's Made</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@LearnBright" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Learn Bright</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@MysterySci/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Mystery Science</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@NGScience/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Next Generation Science</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@SmileandLearnEnglish/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Smile and Learn - English</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 动物实拍 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('动物实拍')">
+        <div class="subsection-arrow" id="arrow-动物实拍">▶</div>
+        <span class="subsection-title">动物实拍</span>
+        <span class="subsection-count">6</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-动物实拍" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@KQEDDeepLook" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Deep Look</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@DiscoveryTV" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Discovery UK</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@lovenature/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Love Nature</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@LoveNatureKids/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Love Nature- Kids</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@realscience" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Real Science</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@RealWild/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Real Wild - YouTube - 副本</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 动物解说 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('动物解说')">
+        <div class="subsection-arrow" id="arrow-动物解说">▶</div>
+        <span class="subsection-title">动物解说</span>
+        <span class="subsection-count">3</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-动物解说" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@animalogic" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Animalogic</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@OctopusLady" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">The Octopus Lady</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@zefrank" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Ze Frank</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 动画科普 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('动画科普')">
+        <div class="subsection-arrow" id="arrow-动画科普">▶</div>
+        <span class="subsection-title">动画科普</span>
+        <span class="subsection-count">7</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-动画科普" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@AmoebaSisters/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Amoeba Sisters</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@Brainiacs" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Brainiac</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@ColossalCranium/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Colossal Cranium</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@FAEdu/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Free Animated Education</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@kurzgesagt/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Kurzgesagt – In a Nutshell</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@TEDEd" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">TED-Ed</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@TheInfographicsShow" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">The Infographics Show</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 医疗动画 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('医疗动画')">
+        <div class="subsection-arrow" id="arrow-医疗动画">▶</div>
+        <span class="subsection-title">医疗动画</span>
+        <span class="subsection-count">2</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-医疗动画" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@FME/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">FreeMedEducation</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@fuseschool/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">FuseSchool - Global Education</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 大型机械 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('大型机械')">
+        <div class="subsection-arrow" id="arrow-大型机械">▶</div>
+        <span class="subsection-title">大型机械</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-大型机械" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@TechVibe8/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Tech Vibe</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 天文 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('天文')">
+        <div class="subsection-arrow" id="arrow-天文">▶</div>
+        <span class="subsection-title">天文</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-天文" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@astrumspace" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Astrum</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 安全习惯 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('安全习惯')">
+        <div class="subsection-arrow" id="arrow-安全习惯">▶</div>
+        <span class="subsection-title">安全习惯</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-安全习惯" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@genkipark/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Genki Park</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 微生物实拍 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('微生物实拍')">
+        <div class="subsection-arrow" id="arrow-微生物实拍">▶</div>
+        <span class="subsection-title">微生物实拍</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-微生物实拍" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@journeytomicro" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Journey to the Microcosmos</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 战争动画 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('战争动画')">
+        <div class="subsection-arrow" id="arrow-战争动画">▶</div>
+        <span class="subsection-title">战争动画</span>
+        <span class="subsection-count">2</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-战争动画" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@Simplehistory/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Simple History</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@Yarnhub" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Yarnhub</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 泛科普 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('泛科普')">
+        <div class="subsection-arrow" id="arrow-泛科普">▶</div>
+        <span class="subsection-title">泛科普</span>
+        <span class="subsection-count">1</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-泛科普" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@sciencechannel/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Science Channel</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 深海实拍 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('深海实拍')">
+        <div class="subsection-arrow" id="arrow-深海实拍">▶</div>
+        <span class="subsection-title">深海实拍</span>
+        <span class="subsection-count">2</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-深海实拍" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@DeepseaOddities" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">DeepseaOddities</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@NaturalWorldFacts" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Natural World Facts</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 火车 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('火车')">
+        <div class="subsection-arrow" id="arrow-火车">▶</div>
+        <span class="subsection-title">火车</span>
+        <span class="subsection-count">11</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-火车" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@AaronWitt/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Aaron Witt</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@CoasterFan2105/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">CoasterFan2105</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@DownieLive/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">DownieLive</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@everything.trains/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Everything Trains</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@FrAnK34811/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">FrAnK34811</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@HD1080ide/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">HD1080ide</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@Ramziggy/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Mon-Line Productions</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@TheRailfanDan/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Railfan Dan</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@SD457500" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">SD457500</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@SuperalbsTravels/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Superalbs Travels</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@Thom-TRA/videos" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Trains Are Awesome</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 科学小实验 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('科学小实验')">
+        <div class="subsection-arrow" id="arrow-科学小实验">▶</div>
+        <span class="subsection-title">科学小实验</span>
+        <span class="subsection-count">2</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-科学小实验" style="display: none;">
+        <a class="card" href="https://www.youtube.com/@NileRed/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">NileRed</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@TheActionLab/featured" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">The Action Lab</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 纪录片合集 -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('纪录片合集')">
+        <div class="subsection-arrow" id="arrow-纪录片合集">▶</div>
+        <span class="subsection-title">纪录片合集</span>
+        <span class="subsection-count">4</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-纪录片合集" style="display: none;">
+        <a class="card" href="https://www.youtube.com/playlist?list=PL9YljwOrHxhdwfzpHsi1U8Js0UUhR3_fm" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Archaeology</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@PBSAmerica" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">PBS America</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.youtube.com/@RealWild/playlists" target="_blank">
+          <div class="card-ico">🎬</div>
+          <div class="card-info">
+            <div class="card-name">Real Wild</div>
+            <div class="card-domain">youtube.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://www.135world.com/wp-login.php?wpsl=loggedout" target="_blank">
+          <div class="card-ico">📺</div>
+          <div class="card-info">
+            <div class="card-name">登录 ‹ 135纪录片官网_纪录片自媒体解说素材下载_经典好看高清纪录片下载推荐网站 — WordPress</div>
+            <div class="card-domain">135world.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <!-- Subsection: 轰隆隆！ -->
+    <div class="subsection">
+      <div class="subsection-header" onclick="toggleSubsection('轰隆隆-')">
+        <div class="subsection-arrow" id="arrow-轰隆隆-">▶</div>
+        <span class="subsection-title">轰隆隆！</span>
+        <span class="subsection-count">4</span>
+      </div>
+      <div class="cards-grid subsection-content" id="content-轰隆隆-" style="display: none;">
+        <a class="card" href="https://v.youku.com/v_show/id_XNjQ1NDgwMjY0OA==.html?spm=a2hkt.13141534.%24%7BmoduleIndex%7D_1.d_27_1&scm=20140719.apircmd.298811.video_XNjQ1NDgwMjY0OA%3D%3D&s=fecf025bdcf549e3916f" target="_blank">
+          <div class="card-ico">📺</div>
+          <div class="card-info">
+            <div class="card-name">轰隆隆！神奇的火车世界 第1集 先导片-少儿-高清完整正版视频在线观看-优酷</div>
+            <div class="card-domain">v.youku.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://v.youku.com/v_show/id_XNjQ3MjM2ODA2MA==.html?spm=a2hkt.13141534.card_7.d_1_2&s=acfd8ed5b1f74c73994a&scm=20140719.rcmd.298813.show_acfd8ed5b1f74c73994a" target="_blank">
+          <div class="card-ico">📺</div>
+          <div class="card-info">
+            <div class="card-name">轰隆隆！神奇的火车世界 第二季 第1集 神奇的火车世界 第二季 先导片-少儿-高清完整正版视频在线观看-优酷</div>
+            <div class="card-domain">v.youku.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://v.youku.com/v_show/id_XNjQyOTEzMTI1Mg==.html?spm=a2hkt.13141534.card_7.d_1_1&s=fefdf4269f82408db0c3&scm=20140719.rcmd.298813.show_fefdf4269f82408db0c3" target="_blank">
+          <div class="card-ico">📺</div>
+          <div class="card-info">
+            <div class="card-name">轰隆隆！神奇的船舶世界 第1集 神奇的船舶世界-少儿-高清完整正版视频在线观看-优酷</div>
+            <div class="card-domain">v.youku.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a class="card" href="https://v.youku.com/v_show/id_XNjQ4Mzk2NjcwNA==.html?spm=a2hkt.13141534.%24%7BmoduleIndex%7D_1.d_31_1&scm=20140719.apircmd.298811.video_XNjQ4Mzk2NjcwNA%3D%3D&s=daca8317428a4f4b8e00" target="_blank">
+          <div class="card-ico">📺</div>
+          <div class="card-info">
+            <div class="card-name">轰隆隆！超级救援队 第1集 超级救援队出动！-少儿-高清完整正版视频在线观看-优酷</div>
+            <div class="card-domain">v.youku.com</div>
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><span>✦ 自动整理自桌面链接 · 2026年2月 ✦</span></p>
+  </footer>
+
+</div>
+
+<script>
+  // Count cards per section and fill in counts
+  document.querySelectorAll('.section').forEach(sec => {
+    const cat = sec.dataset.section;
+    const count = sec.querySelectorAll('.card').length;
+    const el = document.getElementById('count-' + cat);
+    if (el) el.textContent = count;
+  });
+
+  // Update total count
+  const total = document.querySelectorAll('.card').length;
+  document.getElementById('totalCount').textContent = total;
+
+  // Function to update category counts after moving cards
+  function updateCategoryCounts() {
+    document.querySelectorAll('.section').forEach(sec => {
+      const cat = sec.dataset.section;
+      const count = sec.querySelectorAll('.card').length;
+      const el = document.getElementById('count-' + cat);
+      if (el) el.textContent = count;
+      const sidebarCountEl = document.getElementById('sidebar-count-' + cat);
+      if (sidebarCountEl) sidebarCountEl.textContent = count;
+    });
+    const total = document.querySelectorAll('.card').length;
+    document.getElementById('totalCount').textContent = total;
+    document.getElementById('sidebar-count-all').textContent = total;
+  }
+
+  // Function to save card category to localStorage
+  function saveCardCategory(cardUrl, category) {
+    const savedCategories = JSON.parse(localStorage.getItem('cardCategories') || '{}');
+    savedCategories[cardUrl] = category;
+    localStorage.setItem('cardCategories', JSON.stringify(savedCategories));
+  }
+
+  // Function to restore card categories from localStorage
+  function restoreCardCategories() {
+    const savedCategories = JSON.parse(localStorage.getItem('cardCategories') || '{}');
+    // Iterate through all cards and move them if saved category exists
+    document.querySelectorAll('.card').forEach(card => {
+      const cardUrl = card.getAttribute('href');
+      if (cardUrl && savedCategories.hasOwnProperty(cardUrl)) {
+        const category = savedCategories[cardUrl];
+        const targetSection = document.querySelector(`.section[data-section="${category}"]`);
+        if (targetSection) {
+          const cardsGrid = targetSection.querySelector('.cards-grid');
+          const currentCardsGrid = card.closest('.cards-grid');
+          if (cardsGrid && currentCardsGrid && cardsGrid !== currentCardsGrid) {
+            cardsGrid.appendChild(card);
+          }
+        }
+      }
+    });
+    updateCategoryCounts();
+  }
+
+  // Initial counts update and restore categories
+  restoreCardCategories();
+
+  // Sync sidebar active state with filter buttons
+  const activeFilterBtn = document.querySelector('.filter-btn.active');
+  if (activeFilterBtn) {
+    const activeCat = activeFilterBtn.dataset.cat;
+    document.querySelectorAll('.sidebar-category').forEach(catEl => {
+      catEl.classList.toggle('active', catEl.dataset.cat === activeCat);
+    });
+  }
+
+  // Sidebar category filter
+  const sidebarCategories = document.querySelectorAll('.sidebar-category');
+  sidebarCategories.forEach(catEl => {
+    catEl.addEventListener('click', () => {
+      sidebarCategories.forEach(c => c.classList.remove('active'));
+      catEl.classList.add('active');
+      const cat = catEl.dataset.cat;
+      // Trigger corresponding filter button click
+      const correspondingBtn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+      if (correspondingBtn) correspondingBtn.click();
+    });
+  });
+
+  // Add category tags to cards
+  const categoryDisplayNames = {
+    'ai': 'AI工具',
+    'video': '视频创作',
+    'content': '内容平台',
+    'tool': '实用工具',
+    'download': '下载资源',
+    'finance': '金融投资',
+    'study': '学习知识',
+    'music': '音乐娱乐',
+    'youtube': 'Youtube素材',
+    'government': '政务办公',
+    'design': '设计素材',
+    'shopping': '购物消费',
+    'other': '其他'
+  };
+  document.querySelectorAll('.card').forEach(card => {
+    // Find parent section category
+    const section = card.closest('.section');
+    if (!section) return;
+    const cat = section.dataset.section;
+    const displayName = categoryDisplayNames[cat] || cat;
+
+    // Create tag element
+    const tag = document.createElement('div');
+    tag.className = 'card-category-tag';
+    tag.textContent = displayName;
+    tag.dataset.category = cat;
+
+    // Create dropdown menu
+    const dropdown = document.createElement('div');
+    dropdown.className = 'card-category-dropdown';
+    Object.entries(categoryDisplayNames).forEach(([id, name]) => {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = name;
+      link.dataset.category = id;
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // Move card to new category
+        const newCat = id;
+        const newSection = document.querySelector(`.section[data-section="${newCat}"]`);
+        if (newSection && newSection !== section) {
+          const cardsGrid = newSection.querySelector('.cards-grid');
+          if (cardsGrid) {
+            cardsGrid.appendChild(card);
+            tag.textContent = name;
+            tag.dataset.category = newCat;
+            // Update counts
+            updateCategoryCounts();
+            // Save to localStorage
+            const cardUrl = card.getAttribute('href');
+            if (cardUrl) {
+              saveCardCategory(cardUrl, newCat);
+            }
+          }
+        }
+        dropdown.classList.remove('show');
+        card.classList.remove('show-dropdown');
+      });
+      dropdown.appendChild(link);
+    });
+
+    // Position relative
+    card.style.position = 'relative';
+    card.appendChild(tag);
+    card.appendChild(dropdown);
+
+    // Tag click toggles dropdown
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      // Hide all other dropdowns and remove elevation
+      document.querySelectorAll('.card-category-dropdown.show').forEach(d => {
+        if (d !== dropdown) {
+          d.classList.remove('show');
+          d.closest('.card')?.classList.remove('show-dropdown');
+        }
+      });
+      const isShowing = dropdown.classList.toggle('show');
+      card.classList.toggle('show-dropdown', isShowing);
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.card-category-dropdown.show').forEach(d => {
+      d.classList.remove('show');
+      d.closest('.card')?.classList.remove('show-dropdown');
+    });
+  });
+
+  // Category filter (original buttons, hidden)
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.section').forEach(sec => {
+        if (cat === 'all' || sec.dataset.section === cat) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+      // Also reset search
+      document.getElementById('search').value = '';
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('search-hidden'));
+    });
+  });
+
+  // Search
+  const searchInput = document.getElementById('search');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('search-hidden'));
+      // Restore filter visibility
+      const activeFilter = document.querySelector('.filter-btn.active')?.dataset.cat || 'all';
+      document.querySelectorAll('.section').forEach(sec => {
+        if (activeFilter === 'all' || sec.dataset.section === activeFilter) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+      return;
+    }
+    // Show all sections during search
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('hidden'));
+    document.querySelectorAll('.card').forEach(card => {
+      const name = card.querySelector('.card-name')?.textContent.toLowerCase() || '';
+      const domain = card.querySelector('.card-domain')?.textContent.toLowerCase() || '';
+      const href = (card.getAttribute('href') || '').toLowerCase();
+      if (name.includes(q) || domain.includes(q) || href.includes(q)) {
+        card.classList.remove('search-hidden');
+      } else {
+        card.classList.add('search-hidden');
+      }
+    });
+    // Hide sections that are now empty
+    document.querySelectorAll('.section').forEach(sec => {
+      const visible = [...sec.querySelectorAll('.card')].some(c => !c.classList.contains('search-hidden'));
+      sec.classList.toggle('hidden', !visible);
+    });
+  });
+
+  // Toggle subsection visibility
+  function toggleSubsection(id) {
+    const content = document.getElementById('content-' + id);
+    const arrow = document.getElementById('arrow-' + id);
+    if (content.style.display === 'none') {
+      content.style.display = 'grid';
+      arrow.textContent = '▼';
+    } else {
+      content.style.display = 'none';
+      arrow.textContent = '▶';
+    }
+  }
+</script>
+</body>
+</html>
