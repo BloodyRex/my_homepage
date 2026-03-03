@@ -1904,6 +1904,9 @@
       arrow.textContent = '▶';
     }
   }
+
+</div> </div> <div class="export-fab" onclick="exportNewJSON()">💾</div>
+
 <script>
   let localLinksData = [];
 
@@ -1920,13 +1923,11 @@
       })
       .catch(err => {
         console.error('数据加载失败:', err);
-        // 如果是因为找不到 links.json，这里会报错，请确保该文件已上传到 GitHub 同级目录
       });
   });
 
   // 2. 渲染函数
   function renderLinks(links) {
-    // 清空旧容器
     document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
     
     links.forEach((link, index) => {
@@ -1990,6 +1991,6 @@
     if (document.getElementById('sidebar-count-all')) document.getElementById('sidebar-count-all').textContent = total;
   }
 </script>
-<div class="export-fab" onclick="exportNewJSON()">💾</div>
+
 </body>
 </html>
