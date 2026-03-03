@@ -1871,7 +1871,7 @@
   // 2. 将 JSON 数据转化为 HTML 卡片
   function renderLinks(links) {
     links.forEach(link => {
-      // 根据 category 找到对应的容器 (例如 class 为 "cat-ai" 的 section 下的 cards-grid)
+      // 查找对应分类的容器
       const container = document.querySelector(`.cat-${link.category} .cards-grid`);
       
       if (container) {
@@ -1889,9 +1889,36 @@
       }
     });
     
-    // 如果你原代码中有统计数量的逻辑，可以在这里重新运行一次
-    if (typeof updateStats === 'function') updateStats();
+    // 渲染完成后，立即刷新所有计数器
+    updateStats();
   }
-</script>
-</body>
+
+  // 3. 统计功能函数（适配你的 HTML 结构）
+  function updateStats() {
+    // A. 更新顶部总数 (对应你的 id="totalCount")
+    const total = document.querySelectorAll('.card').length;
+    const totalEl = document.getElementById('totalCount');
+    if (totalEl) totalEl.textContent = total;
+
+    // B. 定义所有分类 ID
+    const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
+
+    categories.forEach(cat => {
+      // 算出该分类下有多少个卡片
+      const count = document.querySelectorAll(`.cat-${cat} .card`).length;
+
+      // 更新侧边栏计数 (对应 id="sidebar-count-xxx")
+      const sidebarEl = document.getElementById(`sidebar-count-${cat}`);
+      if (sidebarEl) sidebarEl.textContent = count;
+
+      // 更新分类标题旁的计数 (对应 id="count-xxx")
+      const titleEl = document.getElementById(`count-${cat}`);
+      if (titleEl) titleEl.textContent = count;
+    });
+
+    // 更新侧边栏“全部”计数
+    const sidebarAll = document.getElementById('sidebar-count-all');
+    if (sidebarAll) sidebarAll.textContent = total;
+  }
+</script></body>
 </html>
