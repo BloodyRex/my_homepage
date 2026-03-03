@@ -965,18 +965,6 @@
 
 </div>
 
-<script>
-  // Count cards per section and fill in counts
-  document.querySelectorAll('.section').forEach(sec => {
-    const cat = sec.dataset.section;
-    const count = sec.querySelectorAll('.card').length;
-    const el = document.getElementById('count-' + cat);
-    if (el) el.textContent = count;
-  });
-
-  // Update total count
-  const total = document.querySelectorAll('.card').length;
-  document.getElementById('totalCount').textContent = total;
 
 
 
