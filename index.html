@@ -628,17 +628,6 @@
         width: 100%;
       }
 
-      .cards-grid {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
-      }
-    }
-
-    /* Ensure foldable headers match 5-card width */
-    .subsection-header {
-      width: 100%;
-      box-sizing: border-box;
-    }
-
     /* Ensure subsection content and cards grid have proper width */
     .subsection-content {
       width: 100%;
@@ -1918,19 +1907,26 @@
 <script>
   let localLinksData = [];
 
-  // 页面初始化
+  // 1. 初始化加载
   document.addEventListener('DOMContentLoaded', () => {
     fetch('links.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error('links.json 未找到');
+        return response.json();
+      })
       .then(data => {
         localLinksData = data;
         renderLinks(localLinksData);
       })
-      .catch(err => console.error('加载出错:', err));
+      .catch(err => {
+        console.error('数据加载失败:', err);
+        // 如果是因为找不到 links.json，这里会报错，请确保该文件已上传到 GitHub 同级目录
+      });
   });
 
-  // 核心渲染逻辑
+  // 2. 渲染函数
   function renderLinks(links) {
+    // 清空旧容器
     document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
     
     links.forEach((link, index) => {
@@ -1955,18 +1951,20 @@
     updateStats();
   }
 
-  // 交互：修改分类
+  // 3. 修改分类
   function changeCategory(event, index) {
     event.preventDefault();
     const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
-    const newCat = prompt("请输入新分类ID:", localLinksData[index].category);
-    if (newCat && categories.includes(newCat)) {
+    const currentCat = localLinksData[index].category;
+    const newCat = prompt(`修改 "${localLinksData[index].name}" 的分类\n当前: ${currentCat}\n请输入新分类ID:`, currentCat);
+
+    if (newCat && categories.includes(newCat) && newCat !== currentCat) {
       localLinksData[index].category = newCat;
       renderLinks(localLinksData);
     }
   }
 
-  // 交互：导出 JSON
+  // 4. 导出 JSON
   function exportNewJSON() {
     const dataStr = JSON.stringify(localLinksData, null, 2);
     const blob = new Blob([dataStr], { type: "application/json" });
@@ -1975,10 +1973,10 @@
     a.href = url;
     a.download = "links.json";
     a.click();
-    alert("下载完成，请上传至 GitHub 覆盖！");
+    alert("✅ 调整后的 links.json 已下载！请上传到 GitHub 覆盖。");
   }
 
-  // 统计逻辑
+  // 5. 统计函数
   function updateStats() {
     const total = document.querySelectorAll('.card').length;
     if (document.getElementById('totalCount')) document.getElementById('totalCount').textContent = total;
@@ -1989,6 +1987,7 @@
       if (document.getElementById(`sidebar-count-${cat}`)) document.getElementById(`sidebar-count-${cat}`).textContent = count;
       if (document.getElementById(`count-${cat}`)) document.getElementById(`count-${cat}`).textContent = count;
     });
+    if (document.getElementById('sidebar-count-all')) document.getElementById('sidebar-count-all').textContent = total;
   }
 </script>
 <div class="export-fab" onclick="exportNewJSON()">💾</div>
