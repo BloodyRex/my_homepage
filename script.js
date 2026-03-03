@@ -469,9 +469,32 @@ function toggleSubsection(id) {
 
 // ==================== 初始化 ====================
 
+// 初始化不依赖数据的UI组件
+function initUI() {
+  console.log('🖥️ 初始化UI组件...');
+
+  // 设置侧边栏过滤
+  setupSidebarFilter();
+
+  // 设置搜索功能
+  setupSearch();
+
+  // 设置导出按钮事件
+  const exportBtn = document.querySelector('.export-fab');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportNewJSON);
+    console.log('📤 导出按钮事件绑定完成');
+  }
+
+  console.log('✅ UI组件初始化完成');
+}
+
 async function init() {
   try {
     console.log('🚀 开始初始化个人书签主页...');
+
+    // 初始化UI组件（不依赖数据）
+    initUI();
 
     // 加载数据
     const data = await loadLinksData();
@@ -485,17 +508,10 @@ async function init() {
     restoreCardCategoriesFromStorage();
     console.log('💾 分类状态恢复完成');
 
-    // 设置导出按钮事件
-    const exportBtn = document.querySelector('.export-fab');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', exportNewJSON);
-      console.log('📤 导出按钮事件绑定完成');
-    }
-
     console.log('✅ 个人书签主页初始化完成');
   } catch (error) {
     console.error('初始化失败:', error);
-    alert('❌ 页面初始化失败，请检查控制台错误信息');
+    // 即使数据加载失败，UI组件也已初始化，用户可以交互
   }
 }
 
