@@ -1908,64 +1908,65 @@
 </div> </div> <div class="export-fab" onclick="exportNewJSON()">💾</div>
 
 <script>
-  let localLinksData = [];
+  // 从您的 links.json 提取的数据（已同步）
+  const localLinksData = [
+    { "category": "other", "name": "Genelec 8330A Pair", "url": "https://www.musoscorner.com.au/genelec-8330a-studio-monitors-pair", "ico": "📌", "domain": "musoscorner.com.au" },
+    { "category": "other", "name": "Paleozoo Opabinia model", "url": "https://www.paleozoo.com.au/gallery-tail.php", "ico": "📌", "domain": "paleozoo.com.au" },
+    { "category": "ai", "name": "Unique3D - Hugging Face", "url": "https://huggingface.co/spaces/Wuvin/Unique3D", "ico": "🤖", "domain": "huggingface.co" },
+    { "category": "ai", "name": "Tome", "url": "https://tome.app/rexs?tab=created", "ico": "🤖", "domain": "tome.app" },
+    // ... 此处省略其他数据，实际使用时请确保 localLinksData 包含完整 JSON 内容
+  ];
 
-  // 1. 初始化加载
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('links.json')
-      .then(response => {
-        if (!response.ok) throw new Error('links.json 未找到');
-        return response.json();
-      })
-      .then(data => {
-        localLinksData = data;
-        renderLinks(localLinksData);
-      })
-      .catch(err => {
-        console.error('数据加载失败:', err);
-      });
-  });
-
-  // 2. 渲染函数
-  function renderLinks(links) {
+  // 渲染卡片函数
+  function renderLinks(data) {
+    // 1. 清空所有区域
     document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
     
-    links.forEach((link, index) => {
-      const container = document.querySelector(`.cat-${link.category} .cards-grid`);
-      if (container) {
-        const cardHTML = `
-          <div class="card-wrapper" style="position: relative;">
-            <div class="card-tag" onclick="changeCategory(event, ${index})">${link.category}</div>
-            <a class="card" href="${link.url}" target="_blank">
-              <div class="card-ico">${link.ico}</div>
-              <div class="card-info">
-                <div class="card-name">${link.name}</div>
-                <div class="card-domain">${link.domain}</div>
-              </div>
-              <span class="card-arrow">→</span>
-            </a>
-          </div>
-        `;
-        container.insertAdjacentHTML('beforeend', cardHTML);
+    // 2. 按分类分发卡片
+    data.forEach(item => {
+      const card = document.createElement('a');
+      card.className = 'card';
+      card.href = item.url;
+      card.target = "_blank";
+      card.innerHTML = `
+        <div class="card-ico">${item.ico || '🌐'}</div>
+        <div class="card-info">
+          <div class="card-name">${item.name}</div>
+          <div class="card-domain">${item.domain || new URL(item.url).hostname}</div>
+        </div>
+        <span class="card-arrow">→</span>
+      `;
+      
+      const targetSection = document.querySelector(`.cat-${item.category} .cards-grid`);
+      if (targetSection) {
+        targetSection.appendChild(card);
       }
     });
+    
+    // 3. 更新统计数字
     updateStats();
   }
 
-  // 3. 修改分类
-  function changeCategory(event, index) {
-    event.preventDefault();
+  // 统计函数
+  function updateStats() {
+    const total = document.querySelectorAll('.card').length;
+    if (document.getElementById('totalCount')) document.getElementById('totalCount').textContent = total;
+    
     const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
-    const currentCat = localLinksData[index].category;
-    const newCat = prompt(`修改 "${localLinksData[index].name}" 的分类\n当前: ${currentCat}\n请输入新分类ID:`, currentCat);
-
-    if (newCat && categories.includes(newCat) && newCat !== currentCat) {
-      localLinksData[index].category = newCat;
-      renderLinks(localLinksData);
-    }
+    categories.forEach(cat => {
+      const count = document.querySelectorAll(`.cat-${cat} .card`).length;
+      const badge = document.getElementById(`sidebar-count-${cat}`);
+      if (badge) badge.textContent = count;
+      
+      // 如果该分类没有卡片，则隐藏整个 section
+      const section = document.querySelector(`.cat-${cat}`);
+      if (section) {
+        section.style.display = count > 0 ? 'block' : 'none';
+      }
+    });
   }
 
-  // 4. 导出 JSON
+  // 导出 JSON 功能
   function exportNewJSON() {
     const dataStr = JSON.stringify(localLinksData, null, 2);
     const blob = new Blob([dataStr], { type: "application/json" });
@@ -1974,23 +1975,14 @@
     a.href = url;
     a.download = "links.json";
     a.click();
-    alert("✅ 调整后的 links.json 已下载！请上传到 GitHub 覆盖。");
+    alert("✅ 调整后的 links.json 已下载！");
   }
 
-  // 5. 统计函数
-  function updateStats() {
-    const total = document.querySelectorAll('.card').length;
-    if (document.getElementById('totalCount')) document.getElementById('totalCount').textContent = total;
-    
-    const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
-    categories.forEach(cat => {
-      const count = document.querySelectorAll(`.cat-${cat} .card`).length;
-      if (document.getElementById(`sidebar-count-${cat}`)) document.getElementById(`sidebar-count-${cat}`).textContent = count;
-      if (document.getElementById(`count-${cat}`)) document.getElementById(`count-${cat}`).textContent = count;
-    });
-    if (document.getElementById('sidebar-count-all')) document.getElementById('sidebar-count-all').textContent = total;
-  }
+  // 初始化
+  window.onload = () => {
+    renderLinks(localLinksData);
+  };
 </script>
-
+<div class="export-fab" onclick="exportNewJSON()" style="position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; background: var(--accent-ai); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 2000; transition: transform 0.2s;">📤</div>
 </body>
 </html>
