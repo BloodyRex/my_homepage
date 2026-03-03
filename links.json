@@ -196,3 +196,27 @@
     "domain": "hailuoai.com"
   }
 ]
+
+[
+  {
+    "category": "video",
+    "name": "Remove Watermark From Video",
+    "url": "https://unwatermark.ai/video-watermark-remover/",
+    "ico": "🎬",
+    "domain": "unwatermark.ai"
+  },
+  {
+    "category": "video",
+    "name": "免费在线视频去水印",
+    "url": "https://ezremove.ai/zh/video-watermark-remover/",
+    "ico": "🎬",
+    "domain": "ezremove.ai"
+  },
+  {
+    "category": "video",
+    "name": "Animated GIF Optimizer",
+    "url": "https://ezgif.com/optimize",
+    "ico": "🎬",
+    "domain": "ezgif.com"
+  }
+]
