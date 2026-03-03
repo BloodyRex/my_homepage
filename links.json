@@ -1,0 +1,198 @@
+[
+  {
+    "category": "ai",
+    "name": "Google AI Studio",
+    "url": "https://aistudio.google.com/prompts/new_chat",
+    "ico": "🤖",
+    "domain": "aistudio.google.com"
+  },
+  {
+    "category": "ai",
+    "name": "Model Gallery - fal.ai",
+    "url": "https://fal.ai/models",
+    "ico": "🤖",
+    "domain": "fal.ai"
+  },
+  {
+    "category": "ai",
+    "name": "Qwen Image - Hugging Face",
+    "url": "https://huggingface.co/spaces/tori29umai/Qwen-Image-2509-MultipleAngles",
+    "ico": "🤖",
+    "domain": "huggingface.co"
+  },
+  {
+    "category": "ai",
+    "name": "Lovart - 全球首个设计智能体",
+    "url": "https://www.lovart.ai/zh/home",
+    "ico": "🤖",
+    "domain": "lovart.ai"
+  },
+  {
+    "category": "ai",
+    "name": "OiiOii.ai - AI动画团队",
+    "url": "https://www.oiioii.ai/space/00721132-792d-448c-9f3d-0fb63c91aaf5",
+    "ico": "🤖",
+    "domain": "oiioii.ai"
+  },
+  {
+    "category": "ai",
+    "name": "即梦AI - 一站式AI创作平台",
+    "url": "https://jimeng.jianying.com/ai-tool/home",
+    "ico": "🤖",
+    "domain": "jimeng.jianying.com"
+  },
+  {
+    "category": "ai",
+    "name": "可灵 AI - AI创意生产力平台",
+    "url": "https://app.klingai.com/cn/",
+    "ico": "🤖",
+    "domain": "app.klingai.com"
+  },
+  {
+    "category": "ai",
+    "name": "讯飞智文 - AI生成PPT/Word",
+    "url": "https://zhiwen.xfyun.cn/",
+    "ico": "🤖",
+    "domain": "zhiwen.xfyun.cn"
+  },
+  {
+    "category": "ai",
+    "name": "火山方舟管理控制台",
+    "url": "https://console.volcengine.com/ark/region:ark+cn-beijing/model",
+    "ico": "🤖",
+    "domain": "console.volcengine.com"
+  },
+  {
+    "category": "ai",
+    "name": "工作室 - Dify (本地)",
+    "url": "http://localhost/apps",
+    "ico": "🤖",
+    "domain": "localhost"
+  },
+  {
+    "category": "ai",
+    "name": "超级挖掘机 - AI智能投研",
+    "url": "https://mastersgo.cc/",
+    "ico": "🤖",
+    "domain": "mastersgo.cc"
+  },
+  {
+    "category": "ai",
+    "name": "Create AI Videos - Vidu AI",
+    "url": "https://www.vidu.studio/create/character2video",
+    "ico": "🤖",
+    "domain": "vidu.studio"
+  },
+  {
+    "category": "ai",
+    "name": "Reference to Video - Vidu",
+    "url": "https://www.vidu.com/create/character2video",
+    "ico": "🤖",
+    "domain": "vidu.com"
+  },
+  {
+    "category": "ai",
+    "name": "AI剪辑-按脚本快速成片 B站",
+    "url": "https://www.bilibili.com/video/BV1QwYNzAEab/",
+    "ico": "🤖",
+    "domain": "bilibili.com"
+  },
+  {
+    "category": "ai",
+    "name": "AI新视界实验室 - 飞书文档",
+    "url": "https://c2psjdxqac.feishu.cn/docx/YiCid0qMUorfdex5sM8cks1tnbe",
+    "ico": "🤖",
+    "domain": "feishu.cn"
+  },
+  {
+    "category": "ai",
+    "name": "Watermark Remover - AI去图片水印",
+    "url": "https://www.watermarkremover.io/zh",
+    "ico": "🤖",
+    "domain": "watermarkremover.io"
+  },
+  {
+    "category": "ai",
+    "name": "Quaily - AI Newsletter",
+    "url": "https://quaily.com/",
+    "ico": "🤖",
+    "domain": "quaily.com"
+  },
+  {
+    "category": "ai",
+    "name": "Suno - AI Music Creator",
+    "url": "https://suno.com/create",
+    "ico": "🤖",
+    "domain": "suno.com"
+  },
+  {
+    "category": "ai",
+    "name": "Azure AI 配音",
+    "url": "https://speech.microsoft.com/portal/b4fba3f4be854dcc806636919b5b81e4/audiocontentcreation",
+    "ico": "🤖",
+    "domain": "speech.microsoft.com"
+  },
+  {
+    "category": "ai",
+    "name": "DreamStudio",
+    "url": "https://beta.dreamstudio.ai/dream",
+    "ico": "🤖",
+    "domain": "beta.dreamstudio.ai"
+  },
+  {
+    "category": "ai",
+    "name": "Lexica - Image similarity search results",
+    "url": "https://lexica.art/?q=dd8fbc84-9e3d-41e6-98d7-a2302d1967eb",
+    "ico": "🤖",
+    "domain": "lexica.art"
+  },
+  {
+    "category": "ai",
+    "name": "酷表ChatExcel",
+    "url": "https://chatexcel.com/",
+    "ico": "🤖",
+    "domain": "chatexcel.com"
+  },
+  {
+    "category": "ai",
+    "name": "小红书生成器-ChatGPT",
+    "url": "https://ai.xiaohongshu.live/zh",
+    "ico": "🤖",
+    "domain": "ai.xiaohongshu.live"
+  },
+  {
+    "category": "ai",
+    "name": "Unique3D - a Hugging Face Space by Wuvin",
+    "url": "https://huggingface.co/spaces/Wuvin/Unique3D",
+    "ico": "🤖",
+    "domain": "huggingface.co"
+  },
+  {
+    "category": "ai",
+    "name": "Tome",
+    "url": "https://tome.app/rexs?tab=created",
+    "ico": "🤖",
+    "domain": "tome.app"
+  },
+  {
+    "category": "ai",
+    "name": "Create Video",
+    "url": "https://studio.d-id.com/editor",
+    "ico": "🤖",
+    "domain": "studio.d-id.com"
+  },
+  {
+    "category": "ai",
+    "name": "Microsoft Designer - Stunning designs in a flash",
+    "url": "https://designer.microsoft.com/",
+    "ico": "🤖",
+    "domain": "designer.microsoft.com"
+  },
+  {
+    "category": "ai",
+    "name": "海螺视频",
+    "url": "https://hailuoai.com/agent/canvas/450482122338852866",
+    "ico": "🤖",
+    "domain": "hailuoai.com"
+  }
+]
