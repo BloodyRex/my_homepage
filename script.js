@@ -141,8 +141,8 @@ function updateCategoryCounts() {
     const sidebarCountEl = document.getElementById('sidebar-count-' + cat);
     if (sidebarCountEl) sidebarCountEl.textContent = count;
 
-    // 如果该分类没有卡片，则隐藏整个section
-    sec.style.display = count > 0 ? 'block' : 'none';
+    // 如果该分类没有卡片，则隐藏整个section（添加no-items类）
+    sec.classList.toggle('no-items', count === 0);
   });
 
   // 更新总计数

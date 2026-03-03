@@ -228,6 +228,7 @@
     }
 
     .section.hidden { display: none; }
+    .section.no-items { display: none; }
 
     .section-header {
       display: flex;
@@ -652,22 +653,22 @@
 
 /* 右下角导出按钮 */
 .export-fab {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  background: var(--accent-ai);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  cursor: pointer;
-  z-index: 1000;
-  font-size: 24px;
-  transition: transform 0.2s;
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  width: 56px !important;
+  height: 56px !important;
+  background: var(--accent-ai) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
+  cursor: pointer !important;
+  z-index: 9999 !important;
+  font-size: 24px !important;
+  transition: transform 0.2s !important;
 }
 
 .export-fab:hover {
@@ -690,4 +691,15 @@
 
 .export-fab:hover::after {
   opacity: 1;
+}
+
+/* 确保导出按钮在移动端可见 */
+@media (max-width: 900px) {
+  .export-fab {
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 22px !important;
+  }
 }
