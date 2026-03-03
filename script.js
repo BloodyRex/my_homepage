@@ -1,6 +1,14 @@
 // 个人书签主页 - 主逻辑脚本
 // 数据驱动渲染，支持分类编辑和一键导出
 
+// 全局错误处理
+window.addEventListener('error', function(event) {
+  console.error('🌐 全局JavaScript错误:', event.error);
+});
+
+// 确保DOMContentLoaded事件触发
+console.log('📄 script.js已加载');
+
 // ==================== 全局配置 ====================
 const categoryDisplayNames = {
   'ai': 'AI工具',
@@ -357,7 +365,10 @@ function setupSidebarFilter() {
 
   // 侧边栏点击事件
   sidebarCategories.forEach(catEl => {
-    catEl.addEventListener('click', () => {
+    catEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
       sidebarCategories.forEach(c => c.classList.remove('active'));
       catEl.classList.add('active');
       const cat = catEl.dataset.cat;
@@ -473,20 +484,33 @@ function toggleSubsection(id) {
 function initUI() {
   console.log('🖥️ 初始化UI组件...');
 
-  // 设置侧边栏过滤
-  setupSidebarFilter();
+  try {
+    // 设置侧边栏过滤
+    console.log('🔧 设置侧边栏过滤...');
+    setupSidebarFilter();
+    console.log('✅ 侧边栏过滤设置完成');
 
-  // 设置搜索功能
-  setupSearch();
+    // 设置搜索功能
+    console.log('🔍 设置搜索功能...');
+    setupSearch();
+    console.log('✅ 搜索功能设置完成');
 
-  // 设置导出按钮事件
-  const exportBtn = document.querySelector('.export-fab');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', exportNewJSON);
-    console.log('📤 导出按钮事件绑定完成');
+    // 设置导出按钮事件
+    console.log('📤 设置导出按钮事件...');
+    const exportBtn = document.querySelector('.export-fab');
+    if (exportBtn) {
+      console.log('找到导出按钮，绑定点击事件');
+      exportBtn.addEventListener('click', exportNewJSON);
+      console.log('📤 导出按钮事件绑定完成');
+    } else {
+      console.error('❌ 未找到导出按钮元素！');
+    }
+
+    console.log('✅ UI组件初始化完成');
+  } catch (error) {
+    console.error('❌ UI组件初始化失败:', error);
+    throw error; // 重新抛出，让init函数捕获
   }
-
-  console.log('✅ UI组件初始化完成');
 }
 
 async function init() {
