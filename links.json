@@ -1,5 +1,2203 @@
 [
   {
+    "category": "other",
+    "name": "Genelec 8330A Pair",
+    "url": "https://www.musoscorner.com.au/genelec-8330a-studio-monitors-pair",
+    "ico": "📌",
+    "domain": "musoscorner.com.au"
+  },
+  {
+    "category": "other",
+    "name": "Paleozoo Opabinia model",
+    "url": "https://www.paleozoo.com.au/gallery-tail.php",
+    "ico": "📌",
+    "domain": "paleozoo.com.au"
+  },
+  {
+    "category": "other",
+    "name": "Best Flashlights | Flashlightgo",
+    "url": "https://flashlightgo.com/",
+    "ico": "📌",
+    "domain": "flashlightgo.com"
+  },
+  {
+    "category": "other",
+    "name": "64 Zoo Lane Series",
+    "url": "https://subsaga.com/bbc/childrens/64-zoo-lane/series-1/",
+    "ico": "📌",
+    "domain": "subsaga.com"
+  },
+  {
+    "category": "other",
+    "name": "世界苦茶 RSS Feed",
+    "url": "https://feeds.buzzsprout.com/2189845.rss",
+    "ico": "📌",
+    "domain": "feeds.buzzsprout.com"
+  },
+  {
+    "category": "other",
+    "name": "畅游动物世界",
+    "url": "https://chzhshw.ucoz.net/dongwu.htm",
+    "ico": "📌",
+    "domain": "chzhshw.ucoz.net"
+  },
+  {
+    "category": "other",
+    "name": "AList 管理",
+    "url": "http://localhost:5244/@manage",
+    "ico": "📌",
+    "domain": "localhost"
+  },
+  {
+    "category": "other",
+    "name": "aDrive.exe | AList",
+    "url": "http://localhost:5244/D:/aDrive/aDrive.exe",
+    "ico": "📌",
+    "domain": "localhost"
+  },
+  {
+    "category": "other",
+    "name": "Mary Evans Picture Library",
+    "url": "https://www.maryevans.com/",
+    "ico": "📌",
+    "domain": "maryevans.com"
+  },
+  {
+    "category": "other",
+    "name": "雅思网上报名",
+    "url": "https://ielts.neea.cn/myHome/1934523/index#!/homepage",
+    "ico": "📌",
+    "domain": "ielts.neea.cn"
+  },
+  {
+    "category": "other",
+    "name": "Gallerix online museum",
+    "url": "https://gallerix.org/",
+    "ico": "📌",
+    "domain": "gallerix.org"
+  },
+  {
+    "category": "other",
+    "name": "KQED",
+    "url": "https://www.kqed.org/",
+    "ico": "📌",
+    "domain": "kqed.org"
+  },
+  {
+    "category": "other",
+    "name": "剪映字幕在线工具",
+    "url": "https://jy.mzh.ren/",
+    "ico": "📌",
+    "domain": "jy.mzh.ren"
+  },
+  {
+    "category": "other",
+    "name": "HowStuffWorks",
+    "url": "https://www.howstuffworks.com/",
+    "ico": "📌",
+    "domain": "howstuffworks.com"
+  },
+  {
+    "category": "other",
+    "name": "仪表盘 | OpenConnectUs911",
+    "url": "https://11.911connect.us/#/dashboard",
+    "ico": "📌",
+    "domain": "11.911connect.us"
+  },
+  {
+    "category": "other",
+    "name": "大眼仔旭",
+    "url": "http://www.dayanzai.me/",
+    "ico": "📌",
+    "domain": "dayanzai.me"
+  },
+  {
+    "category": "other",
+    "name": "Wallhaven",
+    "url": "https://wallhaven.cc/",
+    "ico": "📌",
+    "domain": "wallhaven.cc"
+  },
+  {
+    "category": "other",
+    "name": "Old Games",
+    "url": "http://www.old-games.com/",
+    "ico": "📌",
+    "domain": "old-games.com"
+  },
+  {
+    "category": "other",
+    "name": "SteamDB",
+    "url": "https://steamdb.info/",
+    "ico": "📌",
+    "domain": "steamdb.info"
+  },
+  {
+    "category": "other",
+    "name": "DeviantArt",
+    "url": "https://www.deviantart.com/",
+    "ico": "📌",
+    "domain": "deviantart.com"
+  },
+  {
+    "category": "other",
+    "name": "musictheory.net",
+    "url": "http://www.musictheory.net/",
+    "ico": "📌",
+    "domain": "musictheory.net"
+  },
+  {
+    "category": "other",
+    "name": "BugMeNot",
+    "url": "http://bugmenot.com/",
+    "ico": "📌",
+    "domain": "bugmenot.com"
+  },
+  {
+    "category": "other",
+    "name": "电子书 - OneDrive",
+    "url": "https://onedrive.live.com/?id=F5B0090663FEEADA%21742&cid=F5B0090663FEEADA",
+    "ico": "📌",
+    "domain": "onedrive.live.com"
+  },
+  {
+    "category": "other",
+    "name": "Free Online OCR",
+    "url": "https://www.onlineocr.net/zh_hans/",
+    "ico": "📌",
+    "domain": "onlineocr.net"
+  },
+  {
+    "category": "other",
+    "name": "ClipConverter",
+    "url": "https://www.clipconverter.cc/",
+    "ico": "📌",
+    "domain": "clipconverter.cc"
+  },
+  {
+    "category": "other",
+    "name": "GeoGebra 经典",
+    "url": "https://www.geogebra.org/classic",
+    "ico": "📌",
+    "domain": "geogebra.org"
+  },
+  {
+    "category": "other",
+    "name": "鸠摩搜索",
+    "url": "https://www.jiumodiary.com/",
+    "ico": "📌",
+    "domain": "jiumodiary.com"
+  },
+  {
+    "category": "other",
+    "name": "前端邓浩",
+    "url": "https://denghao.me/",
+    "ico": "📌",
+    "domain": "denghao.me"
+  },
+  {
+    "category": "other",
+    "name": "MikuTools (imiku.me)",
+    "url": "https://tools.imiku.me/",
+    "ico": "📌",
+    "domain": "tools.imiku.me"
+  },
+  {
+    "category": "other",
+    "name": "医学微视",
+    "url": "https://www.mvyxws.com/",
+    "ico": "📌",
+    "domain": "mvyxws.com"
+  },
+  {
+    "category": "other",
+    "name": "天巡网",
+    "url": "https://www.tianxun.com/",
+    "ico": "📌",
+    "domain": "tianxun.com"
+  },
+  {
+    "category": "other",
+    "name": "Creative Mass",
+    "url": "https://creativemass.cn/#/",
+    "ico": "📌",
+    "domain": "creativemass.cn"
+  },
+  {
+    "category": "other",
+    "name": "重现化学",
+    "url": "http://www.envisioningchemistry.cn/",
+    "ico": "📌",
+    "domain": "envisioningchemistry.cn"
+  },
+  {
+    "category": "other",
+    "name": "专否沙盒",
+    "url": "https://sand-box.cn/",
+    "ico": "📌",
+    "domain": "sand-box.cn"
+  },
+  {
+    "category": "other",
+    "name": "Alltoall (PDF转Word)",
+    "url": "https://www.alltoall.net/",
+    "ico": "📌",
+    "domain": "alltoall.net"
+  },
+  {
+    "category": "other",
+    "name": "C语言中文网",
+    "url": "http://c.biancheng.net/",
+    "ico": "📌",
+    "domain": "c.biancheng.net"
+  },
+  {
+    "category": "other",
+    "name": "RARBG Torrents",
+    "url": "https://rarbgprx.org/torrents.php?r=76721798",
+    "ico": "📌",
+    "domain": "rarbgprx.org"
+  },
+  {
+    "category": "other",
+    "name": "im.acirno.com",
+    "url": "http://im.acirno.com/",
+    "ico": "📌",
+    "domain": "im.acirno.com"
+  },
+  {
+    "category": "other",
+    "name": "超级PDF",
+    "url": "https://xpdf.net/",
+    "ico": "📌",
+    "domain": "xpdf.net"
+  },
+  {
+    "category": "other",
+    "name": "极速SS",
+    "url": "https://jsss-47.top/",
+    "ico": "📌",
+    "domain": "jsss-47.top"
+  },
+  {
+    "category": "other",
+    "name": "歪果不求仁",
+    "url": "https://www.wgbqr.com/",
+    "ico": "📌",
+    "domain": "wgbqr.com"
+  },
+  {
+    "category": "other",
+    "name": "果核剥壳",
+    "url": "https://www.ghxi.com/",
+    "ico": "📌",
+    "domain": "ghxi.com"
+  },
+  {
+    "category": "other",
+    "name": "Efficiency-follow (Vika)",
+    "url": "https://spcqwserdvymm.com.vika.cn/share/shryNwH3HRgvzMTaZVAGx/fodkuzz5eaw0w",
+    "ico": "📌",
+    "domain": "vika.cn"
+  },
+  {
+    "category": "other",
+    "name": "YTS Torrents",
+    "url": "https://yts.torrentsbay.org/",
+    "ico": "📌",
+    "domain": "yts.torrentsbay.org"
+  },
+  {
+    "category": "other",
+    "name": "RARBG Index",
+    "url": "https://www.rarbggo.to/",
+    "ico": "📌",
+    "domain": "rarbggo.to"
+  },
+  {
+    "category": "other",
+    "name": "音频格式在线转换",
+    "url": "https://audio.worthsee.com/convert",
+    "ico": "📌",
+    "domain": "audio.worthsee.com"
+  },
+  {
+    "category": "other",
+    "name": "IBit Verified Torrents",
+    "url": "https://ibit.to/popular/",
+    "ico": "📌",
+    "domain": "ibit.to"
+  },
+  {
+    "category": "other",
+    "name": "TorrentGalaxy",
+    "url": "https://torrentgalaxy.to/",
+    "ico": "📌",
+    "domain": "torrentgalaxy.to"
+  },
+  {
+    "category": "other",
+    "name": "SoftProber",
+    "url": "https://softprober.com/",
+    "ico": "📌",
+    "domain": "softprober.com"
+  },
+  {
+    "category": "other",
+    "name": "Podnapisi (字幕)",
+    "url": "https://www.podnapisi.net/",
+    "ico": "📌",
+    "domain": "podnapisi.net"
+  },
+  {
+    "category": "other",
+    "name": "The Pirate Bay",
+    "url": "https://piratebay.live/",
+    "ico": "📌",
+    "domain": "piratebay.live"
+  },
+  {
+    "category": "other",
+    "name": "我的小站 (网盘资源)",
+    "url": "https://newxiaozhan.com/",
+    "ico": "📌",
+    "domain": "newxiaozhan.com"
+  },
+  {
+    "category": "other",
+    "name": "Fortinet Support",
+    "url": "https://www.fortinet.com/support/product-downloads",
+    "ico": "📌",
+    "domain": "fortinet.com"
+  },
+  {
+    "category": "other",
+    "name": "Cracked.io",
+    "url": "https://cracked.io/",
+    "ico": "📌",
+    "domain": "cracked.io"
+  },
+  {
+    "category": "other",
+    "name": "易书论坛-zlib",
+    "url": "https://bbs.yibook.org/",
+    "ico": "📌",
+    "domain": "bbs.yibook.org"
+  },
+  {
+    "category": "other",
+    "name": "云 (ClashCloud)",
+    "url": "https://clashcloud.org/user",
+    "ico": "📌",
+    "domain": "clashcloud.org"
+  },
+  {
+    "category": "other",
+    "name": "Sci-Hub Shop",
+    "url": "https://sci-hub.shop/",
+    "ico": "📌",
+    "domain": "sci-hub.shop"
+  },
+  {
+    "category": "other",
+    "name": "SMS-Activate",
+    "url": "https://sms-activate.org/cn#",
+    "ico": "📌",
+    "domain": "sms-activate.org"
+  },
+  {
+    "category": "other",
+    "name": "易搜-网盘搜索",
+    "url": "https://yiso.fun/",
+    "ico": "📌",
+    "domain": "yiso.fun"
+  },
+  {
+    "category": "other",
+    "name": "GitHub (Tor Bridges)",
+    "url": "https://github.com/scriptzteam/Tor-Bridges-Collector/blob/main/bridges-obfs4",
+    "ico": "📌",
+    "domain": "github.com"
+  },
+  {
+    "category": "other",
+    "name": "磁力柠檬",
+    "url": "https://lemonra.top/",
+    "ico": "📌",
+    "domain": "lemonra.top"
+  },
+  {
+    "category": "other",
+    "name": "OpenConnectUs",
+    "url": "https://000connect.us/#/dashboard",
+    "ico": "📌",
+    "domain": "000connect.us"
+  },
+  {
+    "category": "other",
+    "name": "NCM转MP3",
+    "url": "https://convert.freelrc.com/NCM-to-MP3",
+    "ico": "📌",
+    "domain": "convert.freelrc.com"
+  },
+  {
+    "category": "other",
+    "name": "Noise导航",
+    "url": "https://www.noisedh.cn/",
+    "ico": "📌",
+    "domain": "noisedh.cn"
+  },
+  {
+    "category": "other",
+    "name": "OpenYYY 开源云音乐",
+    "url": "https://openyyy.com/",
+    "ico": "📌",
+    "domain": "openyyy.com"
+  },
+  {
+    "category": "other",
+    "name": "天文杂杂",
+    "url": "https://pan.baidu.com/s/1o8BCHi6?_at_=1629450646003#list/path=%2F&parentPath=%2F",
+    "ico": "📌",
+    "domain": "pan.baidu.com"
+  },
+  {
+    "category": "other",
+    "name": "能自力",
+    "url": "https://www.nengzili.org/#term-966",
+    "ico": "📌",
+    "domain": "nengzili.org"
+  },
+  {
+    "category": "other",
+    "name": "World History Encyclopedia",
+    "url": "https://www.worldhistory.org/",
+    "ico": "📌",
+    "domain": "worldhistory.org"
+  },
+  {
+    "category": "other",
+    "name": "懒盘搜索",
+    "url": "https://www.lzpanx.com/",
+    "ico": "📌",
+    "domain": "lzpanx.com"
+  },
+  {
+    "category": "other",
+    "name": "monkkee online diary",
+    "url": "https://www.monkkee.com/en/",
+    "ico": "📌",
+    "domain": "monkkee.com"
+  },
+  {
+    "category": "other",
+    "name": "维普期刊",
+    "url": "http://yuxiqbs.cqvip.com/Qikan/Search/Index?key=J%253d%25e5%25a4%25a7%25e8%2587%25aa%25e7%2584%25b6&from=Qikan_Article_Detail",
+    "ico": "📌",
+    "domain": "yuxiqbs.cqvip.com"
+  },
+  {
+    "category": "other",
+    "name": "行情中心 | OpenVlab",
+    "url": "https://www.openvlab.cn/market",
+    "ico": "📌",
+    "domain": "openvlab.cn"
+  },
+  {
+    "category": "other",
+    "name": "证券之星特色数据",
+    "url": "https://resource.stockstar.com/Datacenter/PrivateData/",
+    "ico": "📌",
+    "domain": "resource.stockstar.com"
+  },
+  {
+    "category": "other",
+    "name": "俄罗斯木材厂家",
+    "url": "http://www.wood168.net/chanpin/parea.asp?area=%B6%ED%C2%DE%CB%B9&ran_prd=%B6%ED%C2%DE%CB%B9%C4%BE%B2%C4",
+    "ico": "📌",
+    "domain": "wood168.net"
+  },
+  {
+    "category": "other",
+    "name": "Guitar Improv",
+    "url": "https://www.guitarimprov.com/amazon.html",
+    "ico": "📌",
+    "domain": "guitarimprov.com"
+  },
+  {
+    "category": "other",
+    "name": "Magazine Reader",
+    "url": "https://mgreader.com/",
+    "ico": "📌",
+    "domain": "magazine-reader"
+  },
+  {
+    "category": "other",
+    "name": "Flow",
+    "url": "https://app.flowoss.com/",
+    "ico": "📌",
+    "domain": "app.flowoss.com"
+  },
+  {
+    "category": "other",
+    "name": "工作台 · 计算机技术研究 (语雀)",
+    "url": "https://tongx.yuque.com/dashboard",
+    "ico": "📌",
+    "domain": "tongx.yuque.com"
+  },
+  {
+    "category": "other",
+    "name": "免费在线条形码生成器",
+    "url": "http://barcode.cnaidc.com/html/BCGcode128b.php",
+    "ico": "📌",
+    "domain": "barcode.cnaidc.com"
+  },
+  {
+    "category": "other",
+    "name": "动态首页 - 哔哩哔哩",
+    "url": "https://t.bilibili.com/",
+    "ico": "📌",
+    "domain": "bilibili.com"
+  },
+  {
+    "category": "other",
+    "name": "维度 (优酷专辑)",
+    "url": "http://list.youku.com/albumlist/show?id=2376313&ascending=1&page=1",
+    "ico": "📌",
+    "domain": "youku.com"
+  },
+  {
+    "category": "other",
+    "name": "IMP Awards - 电影海报库",
+    "url": "http://www.impawards.com/",
+    "ico": "📌",
+    "domain": "impawards.com"
+  },
+  {
+    "category": "other",
+    "name": "FL Studio 20 快速入门教程",
+    "url": "https://www.bilibili.com/video/av50431643",
+    "ico": "📌",
+    "domain": "bilibili.com"
+  },
+  {
+    "category": "other",
+    "name": "AcFun 弹幕视频网",
+    "url": "https://www.acfun.cn/",
+    "ico": "📌",
+    "domain": "acfun.cn"
+  },
+  {
+    "category": "other",
+    "name": "Goojara - Watch movies & series online",
+    "url": "https://www.goojara.to/",
+    "ico": "📌",
+    "domain": "goojara.to"
+  },
+  {
+    "category": "other",
+    "name": "电影归档 - 低端影视",
+    "url": "https://ddys.tv/category/movie/",
+    "ico": "📌",
+    "domain": "ddys.tv"
+  },
+  {
+    "category": "other",
+    "name": "GitHub - 直播源相关资源汇总",
+    "url": "https://github.com/imDazui/Tvlist-awesome-m3u-m3u8",
+    "ico": "📌",
+    "domain": "github.com"
+  },
+  {
+    "category": "other",
+    "name": "doyoudo - 创意设计学习",
+    "url": "http://doyoudo.com/",
+    "ico": "📌",
+    "domain": "doyoudo.com"
+  },
+  {
+    "category": "other",
+    "name": "分享交流下载字幕平台 - Sub HD",
+    "url": "http://subhd.com/main",
+    "ico": "📌",
+    "domain": "subhd.com"
+  },
+  {
+    "category": "other",
+    "name": "磁力熊 - 豆瓣高分电影下载",
+    "url": "https://www.cilixiong.com/",
+    "ico": "📌",
+    "domain": "cilixiong.com"
+  },
+  {
+    "category": "other",
+    "name": "音范丝 | 影音集 | 精选4K蓝光原盘",
+    "url": "https://www.yinfans.me/",
+    "ico": "📌",
+    "domain": "yinfans.me"
+  },
+  {
+    "category": "other",
+    "name": "Watch Free Movies Online - MOV",
+    "url": "https://www.mov.onl/",
+    "ico": "📌",
+    "domain": "mov.onl"
+  },
+  {
+    "category": "other",
+    "name": "电影资源下载 - PianHD 高清片网",
+    "url": "http://www.pianhd.com/",
+    "ico": "📌",
+    "domain": "pianhd.com"
+  },
+  {
+    "category": "other",
+    "name": "豆瓣电影",
+    "url": "https://movie.douban.com/",
+    "ico": "📌",
+    "domain": "movie.douban.com"
+  },
+  {
+    "category": "other",
+    "name": "1377x | Download torrents",
+    "url": "https://www.1377x.to/",
+    "ico": "📌",
+    "domain": "1377x.to"
+  },
+  {
+    "category": "other",
+    "name": "Effed Up Movies",
+    "url": "http://www.effedupmovies.com/",
+    "ico": "📌",
+    "domain": "effedupmovies.com"
+  },
+  {
+    "category": "other",
+    "name": "Netflix 影视 - TVFans",
+    "url": "https://www.tvfans.top/",
+    "ico": "📌",
+    "domain": "tvfans.top"
+  },
+  {
+    "category": "other",
+    "name": "IPTV Cat - Free IPTV Lists",
+    "url": "https://iptvcat.com/home_15",
+    "ico": "📌",
+    "domain": "iptvcat.com"
+  },
+  {
+    "category": "other",
+    "name": "夸克盘盘 - 网盘资源分享",
+    "url": "https://quarkpanpan.com/",
+    "ico": "📌",
+    "domain": "quarkpanpan.com"
+  },
+  {
+    "category": "other",
+    "name": "WipFilms - Exploitation Movies",
+    "url": "https://wipfilms.net/",
+    "ico": "📌",
+    "domain": "wipfilms.net"
+  },
+  {
+    "category": "other",
+    "name": "LIBVIO - 影视在线观看",
+    "url": "https://www.libvio.site/",
+    "ico": "📌",
+    "domain": "libvio.site"
+  },
+  {
+    "category": "other",
+    "name": "Z-Library - 世界上最大的电子图书馆",
+    "url": "https://zh.z-lib.gs/",
+    "ico": "📌",
+    "domain": "zh.z-lib.gs"
+  },
+  {
+    "category": "other",
+    "name": "Upwork - 自由职业平台",
+    "url": "https://www.upwork.com/",
+    "ico": "📌",
+    "domain": "upwork.com"
+  },
+  {
+    "category": "other",
+    "name": "Wirestock - 内容售卖仪表盘",
+    "url": "https://wirestock.io/dashboard",
+    "ico": "📌",
+    "domain": "wirestock.io"
+  },
+  {
+    "category": "other",
+    "name": "视频号小店管理",
+    "url": "https://channels.weixin.qq.com/shop/home",
+    "ico": "📌",
+    "domain": "channels.weixin.qq.com"
+  },
+  {
+    "category": "other",
+    "name": "Curiosity Stream - 纪录片流媒体",
+    "url": "https://curiositystream.com/",
+    "ico": "📌",
+    "domain": "curiositystream.com"
+  },
+  {
+    "category": "other",
+    "name": "MindMaster 思维导图",
+    "url": "https://mm.edrawsoft.cn/app/drafts/cloud",
+    "ico": "📌",
+    "domain": "mm.edrawsoft.cn"
+  },
+  {
+    "category": "other",
+    "name": "Videvo - Free Video Clips",
+    "url": "https://www.videvo.net/",
+    "ico": "📌",
+    "domain": "videvo.net"
+  },
+  {
+    "category": "other",
+    "name": "我的问卷 - 问卷星",
+    "url": "https://www.wjx.cn/newwjx/manage/myquestionnaires.aspx",
+    "ico": "📌",
+    "domain": "wjx.cn"
+  },
+  {
+    "category": "other",
+    "name": "The Ring of Wonder",
+    "url": "https://trow.cc/",
+    "ico": "📌",
+    "domain": "trow.cc"
+  },
+  {
+    "category": "other",
+    "name": "64 Zoo Lane Series - SubSaga",
+    "url": "https://subsaga.com/bbc/childrens/64-zoo-lane/series-1/",
+    "ico": "📌",
+    "domain": "subsaga.com"
+  },
+  {
+    "category": "other",
+    "name": "世界苦茶 RSS Feed",
+    "url": "https://feeds.buzzsprout.com/2189845.rss",
+    "ico": "📌",
+    "domain": "feeds.buzzsprout.com"
+  },
+  {
+    "category": "other",
+    "name": "Quora - 知识共享平台",
+    "url": "https://www.quora.com/",
+    "ico": "📌",
+    "domain": "quora.com"
+  },
+  {
+    "category": "other",
+    "name": "畅游动物世界 - 初中生物学",
+    "url": "https://chzhshw.ucoz.net/dongwu.htm",
+    "ico": "📌",
+    "domain": "chzhshw.ucoz.net"
+  },
+  {
+    "category": "other",
+    "name": "Daily Killer Sudoku",
+    "url": "https://www.dailykillersudoku.com/",
+    "ico": "📌",
+    "domain": "dailykillersudoku.com"
+  },
+  {
+    "category": "other",
+    "name": "云盘资源分享社区 - 影视分类",
+    "url": "https://yunpan1.cc/t/video1",
+    "ico": "📌",
+    "domain": "yunpan1.cc"
+  },
+  {
+    "category": "other",
+    "name": "抖音 - 记录美好生活",
+    "url": "https://www.douyin.com/",
+    "ico": "📌",
+    "domain": "douyin.com"
+  },
+  {
+    "category": "other",
+    "name": "本地网关 - 192.168.0.1",
+    "url": "http://192.168.0.1/",
+    "ico": "📌",
+    "domain": "192.168.0.1"
+  },
+  {
+    "category": "other",
+    "name": "Wallhaven - 壁纸库",
+    "url": "https://wallhaven.cc/",
+    "ico": "📌",
+    "domain": "wallhaven.cc"
+  },
+  {
+    "category": "other",
+    "name": "微信读书",
+    "url": "https://weread.qq.com/",
+    "ico": "📌",
+    "domain": "weread.qq.com"
+  },
+  {
+    "category": "other",
+    "name": "管理系统 - 灵石教育",
+    "url": "https://school.lingshi.com/#/home",
+    "ico": "📌",
+    "domain": "school.lingshi.com"
+  },
+  {
+    "category": "other",
+    "name": "Oxford Phonics World | 学习资源",
+    "url": "https://elt.oup.com/student/oxfordphonicsworld/",
+    "ico": "📌",
+    "domain": "elt.oup.com"
+  },
+  {
+    "category": "other",
+    "name": "Patreon (创作者支持平台)",
+    "url": "https://www.patreon.com/",
+    "ico": "📌",
+    "domain": "patreon.com"
+  },
+  {
+    "category": "other",
+    "name": "煎蛋邮箱",
+    "url": "http://mail.jandan.net/cgi-bin/frame_html?sid=wQIUNL51bvENEjpi,2&r=88fc2c085f0fd1145c791bb8128d1f1b",
+    "ico": "📌",
+    "domain": "mail.jandan.net"
+  },
+  {
+    "category": "other",
+    "name": "煎蛋账户",
+    "url": "http://x.jandan.net/wp-admin/profile.php",
+    "ico": "📌",
+    "domain": "x.jandan.net"
+  },
+  {
+    "category": "other",
+    "name": "hao123_快速导航",
+    "url": "http://defkoh.favopen.com/51s_h123",
+    "ico": "📌",
+    "domain": "defkoh.favopen.com"
+  },
+  {
+    "category": "other",
+    "name": "煎蛋 - 地球上没有新鲜事",
+    "url": "http://jandan.net/",
+    "ico": "📌",
+    "domain": "jandan.net"
+  },
+  {
+    "category": "other",
+    "name": "hao123_上网从这里开始",
+    "url": "http://defrf9.hhycrop.com/n1023_h123",
+    "ico": "📌",
+    "domain": "defrf9.hhycrop.com"
+  },
+  {
+    "category": "other",
+    "name": "New Old Stock",
+    "url": "http://nos.twnsnd.co/",
+    "ico": "📌",
+    "domain": "nos.twnsnd.co"
+  },
+  {
+    "category": "other",
+    "name": "National Geographic News and Latest Stories",
+    "url": "http://www.nationalgeographic.com/latest-stories/?source=sitenavstories",
+    "ico": "📌",
+    "domain": "nationalgeographic.com"
+  },
+  {
+    "category": "other",
+    "name": "Animated GIF Maker and Editor",
+    "url": "http://gifcreator.me/",
+    "ico": "📌",
+    "domain": "gifcreator.me"
+  },
+  {
+    "category": "other",
+    "name": "Mathematics of paper folding - Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Mathematics_of_paper_folding#Huzita%E2%80%93Hatori_axioms",
+    "ico": "📌",
+    "domain": "en.wikipedia.org"
+  },
+  {
+    "category": "other",
+    "name": "Origami Tanteidan/Dividing Square Paper",
+    "url": "http://www.origami.gr.jp/Archives/People/CAGE_/divide/02.html",
+    "ico": "📌",
+    "domain": "origami.gr.jp"
+  },
+  {
+    "category": "other",
+    "name": "Matrix67: The Aha Moments",
+    "url": "http://www.matrix67.com/blog/",
+    "ico": "📌",
+    "domain": "matrix67.com"
+  },
+  {
+    "category": "other",
+    "name": "The Math Book: From Pythagoras to the 57th Dimension",
+    "url": "http://sprott.physics.wisc.edu/pickover/math-book.html",
+    "ico": "📌",
+    "domain": "sprott.physics.wisc.edu"
+  },
+  {
+    "category": "other",
+    "name": "译言网 | BloodyRex的个人空间",
+    "url": "http://user.yeeyan.com/u/500411",
+    "ico": "📌",
+    "domain": "user.yeeyan.com"
+  },
+  {
+    "category": "other",
+    "name": "Academia.edu",
+    "url": "https://www.academia.edu/",
+    "ico": "📌",
+    "domain": "academia.edu"
+  },
+  {
+    "category": "other",
+    "name": "【收藏】折纸的基础知识 - 知乎",
+    "url": "https://zhuanlan.zhihu.com/p/127035520",
+    "ico": "📌",
+    "domain": "zhuanlan.zhihu.com"
+  },
+  {
+    "category": "other",
+    "name": "{萝卜塔}折纸方法 - 哔哩哔哩",
+    "url": "https://www.bilibili.com/read/cv586360",
+    "ico": "📌",
+    "domain": "bilibili.com"
+  },
+  {
+    "category": "other",
+    "name": "Socioeconomic Data and Applications Center | SEDAC",
+    "url": "https://sedac.ciesin.columbia.edu/",
+    "ico": "📌",
+    "domain": "sedac.ciesin.columbia.edu"
+  },
+  {
+    "category": "other",
+    "name": "Nature Portfolio Ecology & Evolution Community",
+    "url": "https://ecoevocommunity.nature.com/",
+    "ico": "📌",
+    "domain": "ecoevocommunity.nature.com"
+  },
+  {
+    "category": "other",
+    "name": "弦论历史年表",
+    "url": "http://web.mit.edu/yenjie/www/lm-gb/physics/phys-field-string-3.htm",
+    "ico": "📌",
+    "domain": "web.mit.edu"
+  },
+  {
+    "category": "other",
+    "name": "我的TA说_TA说作者平台_百度百科",
+    "url": "https://baike.baidu.com/tashuo/mp",
+    "ico": "📌",
+    "domain": "baike.baidu.com"
+  },
+  {
+    "category": "other",
+    "name": "牛油果进化论 - 简书",
+    "url": "https://www.jianshu.com/u/66e0dc298add",
+    "ico": "📌",
+    "domain": "jianshu.com"
+  },
+  {
+    "category": "other",
+    "name": "首页 - 媒体开放平台 - 网易号",
+    "url": "http://mp.163.com/index.html#/index?wemediaId=W8131957303556682453",
+    "ico": "📌",
+    "domain": "mp.163.com"
+  },
+  {
+    "category": "other",
+    "name": "我的TA说 (镜像站)",
+    "url": "http://bdxjn.hhycrop.com/Baidu0312",
+    "ico": "📌",
+    "domain": "bdxjn.hhycrop.com"
+  },
+  {
+    "category": "other",
+    "name": "ArchDaily | 传播世界建筑",
+    "url": "https://www.archdaily.cn/cn?ad_source=jv-header",
+    "ico": "📌",
+    "domain": "archdaily.cn"
+  },
+  {
+    "category": "other",
+    "name": "超学科星球：探索地球生命史 - 芒果TV",
+    "url": "https://www.mgtv.com/h/344987.html",
+    "ico": "📌",
+    "domain": "mgtv.com"
+  },
+  {
+    "category": "other",
+    "name": "爱折纸网 - 折纸大全图解",
+    "url": "https://www.aizhezhi.com/",
+    "ico": "📌",
+    "domain": "aizhezhi.com"
+  },
+  {
+    "category": "other",
+    "name": "拍案惊奇，折纸背后的数学 - 果壳",
+    "url": "https://www.guokr.com/article/64469/",
+    "ico": "📌",
+    "domain": "guokr.com"
+  },
+  {
+    "category": "other",
+    "name": "xkcd: Chemtrails",
+    "url": "https://xkcd.com/",
+    "ico": "📌",
+    "domain": "xkcd.com"
+  },
+  {
+    "category": "other",
+    "name": "wikiHow: How-to instructions",
+    "url": "https://www.wikihow.com/Main-Page",
+    "ico": "📌",
+    "domain": "wikihow.com"
+  },
+  {
+    "category": "other",
+    "name": "Audio Library · No Copyright Music",
+    "url": "https://www.audiolibrary.com.co/",
+    "ico": "📌",
+    "domain": "audiolibrary.com.co"
+  },
+  {
+    "category": "other",
+    "name": "Britannica Kids",
+    "url": "https://kids.britannica.com/",
+    "ico": "📌",
+    "domain": "kids.britannica.com"
+  },
+  {
+    "category": "other",
+    "name": "化石网",
+    "url": "http://www.uua.cn/",
+    "ico": "📌",
+    "domain": "uua.cn"
+  },
+  {
+    "category": "other",
+    "name": "Complexly Calendars",
+    "url": "https://www.complexlycalendars.com/",
+    "ico": "📌",
+    "domain": "complexlycalendars.com"
+  },
+  {
+    "category": "other",
+    "name": "海友网CMF-海水观赏鱼网",
+    "url": "https://www.cmfish.com/",
+    "ico": "📌",
+    "domain": "cmfish.com"
+  },
+  {
+    "category": "other",
+    "name": "Multimedia Gallery: NOAA Ocean Exploration",
+    "url": "https://oceanexplorer.noaa.gov/video_playlist.html",
+    "ico": "📌",
+    "domain": "oceanexplorer.noaa.gov"
+  },
+  {
+    "category": "other",
+    "name": "我的账号 - 盗火纪录片",
+    "url": "http://www.daofire.com/account",
+    "ico": "📌",
+    "domain": "daofire.com"
+  },
+  {
+    "category": "other",
+    "name": "Switchback Travel | Outdoor Gear",
+    "url": "https://www.switchbacktravel.com/",
+    "ico": "📌",
+    "domain": "switchbacktravel.com"
+  },
+  {
+    "category": "other",
+    "name": "911 Supply & Adventure Gear",
+    "url": "https://www.911supply.ca/",
+    "ico": "📌",
+    "domain": "911supply.ca"
+  },
+  {
+    "category": "other",
+    "name": "Botach.com | Military & Public Safety Gear",
+    "url": "https://botach.com/",
+    "ico": "📌",
+    "domain": "botach.com"
+  },
+  {
+    "category": "other",
+    "name": "US Patriot: Uniforms and Tactical Gear",
+    "url": "https://www.uspatriottactical.com/",
+    "ico": "📌",
+    "domain": "uspatriottactical.com"
+  },
+  {
+    "category": "other",
+    "name": "维基新闻，自由的新闻源",
+    "url": "https://zh.wikinews.org/wiki/Wikinews:%E9%A6%96%E9%A1%B5",
+    "ico": "📌",
+    "domain": "zh.wikinews.org"
+  },
+  {
+    "category": "other",
+    "name": "REI: A Life Outdoors",
+    "url": "https://www.rei.com/",
+    "ico": "📌",
+    "domain": "rei.com"
+  },
+  {
+    "category": "other",
+    "name": "DS Tactical",
+    "url": "https://dstactical.com/",
+    "ico": "📌",
+    "domain": "dstactical.com"
+  },
+  {
+    "category": "other",
+    "name": "Lovecraftian Science",
+    "url": "https://lovecraftianscience.wordpress.com/",
+    "ico": "📌",
+    "domain": "lovecraftianscience.wordpress.com"
+  },
+  {
+    "category": "other",
+    "name": "At the Mountains of Madness - H. P. Lovecraft",
+    "url": "https://www.hplovecraft.com/writings/texts/fiction/mm.aspx",
+    "ico": "📌",
+    "domain": "hplovecraft.com"
+  },
+  {
+    "category": "other",
+    "name": "洛夫克拉夫特 - 维基百科",
+    "url": "https://zh.wikipedia.org/zh-cn/%E9%9C%8D%E5%8D%8E%E5%BE%B7%C2%B7%E8%8F%B2%E5%88%A9%E6%99%AE%E6%96%AF%C2%B7%E6%B4%9B%E5%A4%AB%E5%85%8B%E6%8B%89%E5%A4%AB%E7%89%B9",
+    "ico": "📌",
+    "domain": "zh.wikipedia.org"
+  },
+  {
+    "category": "other",
+    "name": "Genelec 8330A Pair | Musos Corner",
+    "url": "https://www.musoscorner.com.au/genelec-8330a-studio-monitors-pair",
+    "ico": "📌",
+    "domain": "musoscorner.com.au"
+  },
+  {
+    "category": "other",
+    "name": "Paleozoo Opabinia model",
+    "url": "https://www.paleozoo.com.au/gallery-tail.php",
+    "ico": "📌",
+    "domain": "paleozoo.com.au"
+  },
+  {
+    "category": "other",
+    "name": "Klättermusen Unisex Raido Backpack 38L",
+    "url": "https://www.klattermusen.com/en/backpacks/lightweight-backpacks/40403u01-raido-backpack-38l-raven/",
+    "ico": "📌",
+    "domain": "klattermusen.com"
+  },
+  {
+    "category": "other",
+    "name": "Best Flashlights | Flashlightgo",
+    "url": "https://flashlightgo.com/",
+    "ico": "📌",
+    "domain": "flashlightgo.com"
+  },
+  {
+    "category": "music",
+    "name": "Album of The Year - 音乐排行",
+    "url": "https://www.albumoftheyear.org/",
+    "ico": "🎵",
+    "domain": "albumoftheyear.org"
+  },
+  {
+    "category": "design",
+    "name": "锐景创意",
+    "url": "http://originoo.com/ws/p.index.php",
+    "ico": "🎨",
+    "domain": "originoo.com"
+  },
+  {
+    "category": "design",
+    "name": "免费图片 - Pixabay",
+    "url": "https://pixabay.com/",
+    "ico": "🎨",
+    "domain": "pixabay.com"
+  },
+  {
+    "category": "design",
+    "name": "稿定设计",
+    "url": "https://www.gaoding.com/",
+    "ico": "🎨",
+    "domain": "gaoding.com"
+  },
+  {
+    "category": "design",
+    "name": "摄图网-正版高清图片下载",
+    "url": "https://699pic.com/",
+    "ico": "🎨",
+    "domain": "699pic.com"
+  },
+  {
+    "category": "design",
+    "name": "ArtStation",
+    "url": "https://www.artstation.com/",
+    "ico": "🎨",
+    "domain": "artstation.com"
+  },
+  {
+    "category": "design",
+    "name": "免费素材图片 · Pexels",
+    "url": "https://www.pexels.com/zh-cn/",
+    "ico": "🎨",
+    "domain": "pexels.com"
+  },
+  {
+    "category": "design",
+    "name": "素材下载-站长素材",
+    "url": "https://sc.chinaz.com/",
+    "ico": "🎨",
+    "domain": "sc.chinaz.com"
+  },
+  {
+    "category": "design",
+    "name": "古田路9号-品牌创意平台",
+    "url": "https://www.gtn9.com/index.aspx",
+    "ico": "🎨",
+    "domain": "gtn9.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Woolworths Supermarket",
+    "url": "https://www.woolworths.com.au/",
+    "ico": "🛍️",
+    "domain": "woolworths.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Coles Online",
+    "url": "https://shop.coles.com.au/a/a-vic-metro-richmond-south/everything/browse",
+    "ico": "🛍️",
+    "domain": "shop.coles.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "BIG W | Everyday's a big day",
+    "url": "https://www.bigw.com.au/",
+    "ico": "🛍️",
+    "domain": "bigw.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "JB Hi-Fi - Home Entertainment",
+    "url": "https://www.jbhifi.com.au/",
+    "ico": "🛍️",
+    "domain": "jbhifi.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "MR PORTER",
+    "url": "https://www.mrporter.com/en-au/",
+    "ico": "🛍️",
+    "domain": "mrporter.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Designer Fashion - FARFETCH AU",
+    "url": "https://www.farfetch.com/au/shopping/men/items.aspx",
+    "ico": "🛍️",
+    "domain": "farfetch.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Woolstar - Wool Quilt",
+    "url": "https://woolstar.com.au/products/25-year-anniversary-winter-wool-quilt/",
+    "ico": "🛍️",
+    "domain": "woolstar.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Razer Australia",
+    "url": "https://www2.razer.com/au-en",
+    "ico": "🛍️",
+    "domain": "razer.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Chemist Warehouse",
+    "url": "https://www.chemistwarehouse.com.au/",
+    "ico": "🛍️",
+    "domain": "chemistwarehouse.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Games World South Australia",
+    "url": "https://www.gamesworldsa.com.au/collections/bicyclecards",
+    "ico": "🛍️",
+    "domain": "gamesworldsa.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "KeepCup | Reusable Coffee Cups",
+    "url": "https://au.keepcup.com/",
+    "ico": "🛍️",
+    "domain": "au.keepcup.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Superdry Australia",
+    "url": "https://superdry.com.au/",
+    "ico": "🛍️",
+    "domain": "superdry.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Lululemon Australia",
+    "url": "https://www.lululemon.com.au/en-au/my-account",
+    "ico": "🛍️",
+    "domain": "lululemon.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Driza-Bone",
+    "url": "https://drizabone.com.au/",
+    "ico": "🛍️",
+    "domain": "drizabone.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "icebreaker® Merino Wool",
+    "url": "https://www.icebreaker.com/en-au/web-specials",
+    "ico": "🛍️",
+    "domain": "icebreaker.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Kathmandu AU",
+    "url": "https://www.kathmandu.com.au/",
+    "ico": "🛍️",
+    "domain": "kathmandu.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Goshawk-Hiking Gear",
+    "url": "https://www.goshawkoutdoor.online/",
+    "ico": "🛍️",
+    "domain": "goshawkoutdoor.online"
+  },
+  {
+    "category": "shopping",
+    "name": "Sheridan Outlet",
+    "url": "https://www.sheridanoutlet.com.au/",
+    "ico": "🛍️",
+    "domain": "sheridanoutlet.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "ZIMMERMANN",
+    "url": "https://www.zimmermann.com/hk/",
+    "ico": "🛍️",
+    "domain": "zimmermann.com"
+  },
+  {
+    "category": "shopping",
+    "name": "SIR. | Separates",
+    "url": "https://us.sirthelabel.com/",
+    "ico": "🛍️",
+    "domain": "us.sirthelabel.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Aje | Designer Women's Clothing",
+    "url": "https://ajeworld.com.au/",
+    "ico": "🛍️",
+    "domain": "ajeworld.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "BEC + BRIDGE AU",
+    "url": "https://www.becandbridge.com.au/",
+    "ico": "🛍️",
+    "domain": "becandbridge.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Arc'teryx Australia",
+    "url": "https://arcteryx.com.au/",
+    "ico": "🛍️",
+    "domain": "arcteryx.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Danner - Men's Most Worn",
+    "url": "https://global.danner.com/men/mens-most-worn",
+    "ico": "🛍️",
+    "domain": "global.danner.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Klättermusen Backpacks",
+    "url": "https://www.klattermusen.com/en/backpacks/lightweight-backpacks/40403u01-raido-backpack-38l-raven/",
+    "ico": "🛍️",
+    "domain": "klattermusen.com"
+  },
+  {
+    "category": "shopping",
+    "name": "UGG | Black Friday Sale",
+    "url": "https://au.ugg.com/",
+    "ico": "🛍️",
+    "domain": "au.ugg.com"
+  },
+  {
+    "category": "shopping",
+    "name": "SedyOnline - Organisation",
+    "url": "https://sedyonline.com/collections/storage-organisation",
+    "ico": "🛍️",
+    "domain": "sedyonline.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Sheridan | Luxury Bed Linen",
+    "url": "https://www.sheridan.com.au/",
+    "ico": "🛍️",
+    "domain": "sheridan.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Le Creuset Australia",
+    "url": "https://www.lecreuset.com.au/en_AU/",
+    "ico": "🛍️",
+    "domain": "lecreuset.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "FF COLLECTIBLES",
+    "url": "https://www.ffcollectibles.com.au/search?q=PC+HOUSE+STUDIO",
+    "ico": "🛍️",
+    "domain": "ffcollectibles.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "THE OUTNET",
+    "url": "https://www.theoutnet.com/en-au/",
+    "ico": "🛍️",
+    "domain": "theoutnet.com"
+  },
+  {
+    "category": "shopping",
+    "name": "Patagonia Outdoor Clothing",
+    "url": "https://www.patagonia.com.au/",
+    "ico": "🛍️",
+    "domain": "patagonia.com.au"
+  },
+  {
+    "category": "shopping",
+    "name": "Ralph Lauren® AU Sale",
+    "url": "https://www.ralphlauren.com.au/sale/men",
+    "ico": "🛍️",
+    "domain": "ralphlauren.com.au"
+  },
+  {
+    "category": "science",
+    "name": "Trilobites.info (三叶虫指南)",
+    "url": "http://www.trilobites.info/",
+    "ico": "🧬",
+    "domain": "trilobites.info"
+  },
+  {
+    "category": "science",
+    "name": "Palaeos (古生物百科全书)",
+    "url": "http://palaeos.com/",
+    "ico": "🧬",
+    "domain": "palaeos.com"
+  },
+  {
+    "category": "science",
+    "name": "Ediacaran Biota (埃迪卡拉生物群)",
+    "url": "https://www.beichengjiu.com/biology/168835.html",
+    "ico": "🧬",
+    "domain": "beichengjiu.com"
+  },
+  {
+    "category": "science",
+    "name": "Deep Sea Hub (深海探索)",
+    "url": "https://deepseahub.com/",
+    "ico": "🧬",
+    "domain": "deepseahub.com"
+  },
+  {
+    "category": "science",
+    "name": "Nature Portfolio Community",
+    "url": "https://natureportfolio.biomedcentral.com/",
+    "ico": "🧬",
+    "domain": "natureportfolio.biomedcentral.com"
+  },
+  {
+    "category": "science",
+    "name": "NatureSpot (野生动物记录)",
+    "url": "https://www.naturespot.org.uk/",
+    "ico": "🧬",
+    "domain": "naturespot.org.uk"
+  },
+  {
+    "category": "science",
+    "name": "Catalogue of Life (物种名录)",
+    "url": "https://www.catalogueoflife.org/",
+    "ico": "🧬",
+    "domain": "catalogueoflife.org"
+  },
+  {
+    "category": "science",
+    "name": "The Public Domain Review",
+    "url": "http://publicdomainreview.org/",
+    "ico": "🧬",
+    "domain": "publicdomainreview.org"
+  },
+  {
+    "category": "science",
+    "name": "Live Science",
+    "url": "https://www.livescience.com/",
+    "ico": "🧬",
+    "domain": "livescience.com"
+  },
+  {
+    "category": "science",
+    "name": "ScienceDaily",
+    "url": "https://www.sciencedaily.com/",
+    "ico": "🧬",
+    "domain": "sciencedaily.com"
+  },
+  {
+    "category": "science",
+    "name": "PNAS (美国国家科学院院刊)",
+    "url": "http://www.pnas.org/",
+    "ico": "🧬",
+    "domain": "pnas.org"
+  },
+  {
+    "category": "science",
+    "name": "Science Magazine News",
+    "url": "http://www.sciencemag.org/news",
+    "ico": "🧬",
+    "domain": "sciencemag.org"
+  },
+  {
+    "category": "science",
+    "name": "National Geographic News",
+    "url": "http://www.nationalgeographic.com/",
+    "ico": "🧬",
+    "domain": "nationalgeographic.com"
+  },
+  {
+    "category": "science",
+    "name": "Deep Sea Zones - Natural World Facts",
+    "url": "https://www.naturalworldfacts.com/the-deep-sea-zones",
+    "ico": "🧬",
+    "domain": "naturalworldfacts.com"
+  },
+  {
+    "category": "science",
+    "name": "Life on Earth",
+    "url": "http://tolweb.org/Life_on_Earth",
+    "ico": "🧬",
+    "domain": "tolweb.org"
+  },
+  {
+    "category": "science",
+    "name": "NCBI Taxonomy Homepage",
+    "url": "https://www.ncbi.nlm.nih.gov/Taxonomy/taxonomyhome.html/index.cgi",
+    "ico": "🧬",
+    "domain": "ncbi.nlm.nih.gov"
+  },
+  {
+    "category": "science",
+    "name": "Quanta Magazine",
+    "url": "https://www.quantamagazine.org/",
+    "ico": "🧬",
+    "domain": "quantamagazine.org"
+  },
+  {
+    "category": "science",
+    "name": "PPBC中国植物图像库",
+    "url": "http://ppbc.iplant.cn/",
+    "ico": "🧬",
+    "domain": "ppbc.iplant.cn"
+  },
+  {
+    "category": "science",
+    "name": "中国动物主题数据库",
+    "url": "http://zoology.especies.cn/",
+    "ico": "🧬",
+    "domain": "zoology.especies.cn"
+  },
+  {
+    "category": "science",
+    "name": "AskNature - 仿生设计",
+    "url": "https://asknature.org/",
+    "ico": "🧬",
+    "domain": "asknature.org"
+  },
+  {
+    "category": "science",
+    "name": "Deep Time Maps™",
+    "url": "https://deeptimemaps.com/",
+    "ico": "🧬",
+    "domain": "deeptimemaps.com"
+  },
+  {
+    "category": "science",
+    "name": "博物wiki",
+    "url": "https://bowu.wiki/",
+    "ico": "🧬",
+    "domain": "bowu.wiki"
+  },
+  {
+    "category": "science",
+    "name": "The Burgess Shale",
+    "url": "https://burgess-shale.rom.on.ca/",
+    "ico": "🧬",
+    "domain": "burgess-shale.rom.on.ca"
+  },
+  {
+    "category": "science",
+    "name": "The Ultimate Dino Resource",
+    "url": "https://www.dinosaur.org/",
+    "ico": "🧬",
+    "domain": "dinosaur.org"
+  },
+  {
+    "category": "instrument",
+    "name": "Maton Guitars Australia (官网)",
+    "url": "https://maton.com.au/",
+    "ico": "🎸",
+    "domain": "maton.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Maton Museum (吉他博物馆)",
+    "url": "https://maton.com.au/museum",
+    "ico": "🎸",
+    "domain": "maton.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "World of Music - Melbourne",
+    "url": "https://www.worldofmusic.com.au/",
+    "ico": "🎸",
+    "domain": "worldofmusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Mannys Music (Maton专题)",
+    "url": "https://www.mannys.com.au/",
+    "ico": "🎸",
+    "domain": "mannys.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Acoustic Centre (原声吉他专家)",
+    "url": "https://www.acousticcentre.com.au/",
+    "ico": "🎸",
+    "domain": "acousticcentre.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Billy Hyde Music (Maton品牌区)",
+    "url": "https://billyhydemusic.com.au/brand/maton",
+    "ico": "🎸",
+    "domain": "billyhydemusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Scarlett Music (独立琴行)",
+    "url": "https://www.scarlettmusic.com.au/",
+    "ico": "🎸",
+    "domain": "scarlettmusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Musos Corner (纽卡斯尔名店)",
+    "url": "https://www.musoscorner.com.au/",
+    "ico": "🎸",
+    "domain": "musoscorner.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Mooloolaba Music (昆州名店)",
+    "url": "https://www.mooloolabamusic.com.au/brand/maton/",
+    "ico": "🎸",
+    "domain": "mooloolabamusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Five Star Music",
+    "url": "https://fivestarmusic.com.au/",
+    "ico": "🎸",
+    "domain": "fivestarmusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Guitar Strings Online (琴弦专家)",
+    "url": "https://www.guitarstringsonline.com.au/",
+    "ico": "🎸",
+    "domain": "guitarstringsonline.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Kosmic (西澳知名琴行)",
+    "url": "https://kosmic.com.au/",
+    "ico": "🎸",
+    "domain": "kosmic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "GuitarBoss",
+    "url": "https://guitarboss.com.au/",
+    "ico": "🎸",
+    "domain": "guitarboss.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Sky Music Maton Acoustic",
+    "url": "https://skymusic.com.au/collections/maton",
+    "ico": "🎸",
+    "domain": "skymusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "Better Music Maton",
+    "url": "https://www.bettermusic.com.au/brand/maton",
+    "ico": "🎸",
+    "domain": "bettermusic.com.au"
+  },
+  {
+    "category": "instrument",
+    "name": "发现曲谱",
+    "url": "https://yopu.co/explore#v=a",
+    "ico": "🎸",
+    "domain": "yopu.co"
+  },
+  {
+    "category": "instrument",
+    "name": "musictheory",
+    "url": "http://www.musictheory.net/",
+    "ico": "🎸",
+    "domain": "musictheory.net"
+  },
+  {
+    "category": "Australia",
+    "name": "Engineers Australia Portal",
+    "url": "https://portal.engineersaustralia.org.au/",
+    "ico": "🦘",
+    "domain": "portal.engineersaustralia.org.au"
+  },
+  {
+    "category": "Australia",
+    "name": "Salomon Australia (户外鞋服)",
+    "url": "https://salomon.com.au/",
+    "ico": "🦘",
+    "domain": "salomon.com.au"
+  },
+  {
+    "category": "Australia",
+    "name": "Hikinging.au (徒步品牌指南)",
+    "url": "https://hikinging.au/",
+    "ico": "🦘",
+    "domain": "hikinging.au"
+  },
+  {
+    "category": "Australia",
+    "name": "THE ICONIC (时尚电商)",
+    "url": "https://www.theiconic.com.au/",
+    "ico": "🦘",
+    "domain": "theiconic.com.au"
+  },
+  {
+    "category": "Australia",
+    "name": "Olight Store Australia",
+    "url": "https://www.olightstore.com.au/cart.html",
+    "ico": "🦘",
+    "domain": "olightstore.com.au"
+  },
+  {
+    "category": "Australia",
+    "name": "17TRACK (跨境物流查询)",
+    "url": "https://www.17track.net/zh-cn",
+    "ico": "🦘",
+    "domain": "17track.net"
+  },
+  {
+    "category": "Australia",
+    "name": "Australian Made Hiking Gear",
+    "url": "https://hikeausnz.com/australian-made-hiking-gear/",
+    "ico": "🦘",
+    "domain": "hikeausnz.com"
+  },
+  {
+    "category": "study",
+    "name": "古生物学 - 中国大学MOOC",
+    "url": "https://www.icourse163.org/learn/NJU-1449998166",
+    "ico": "📚",
+    "domain": "icourse163.org"
+  },
+  {
+    "category": "study",
+    "name": "新东方雅思 - 模考",
+    "url": "https://ieltscat.xdf.cn/mock?source=1",
+    "ico": "📚",
+    "domain": "ieltscat.xdf.cn"
+  },
+  {
+    "category": "study",
+    "name": "世界历史年表（中英对照）",
+    "url": "https://www.historylines.net/history/timeline_simplifiedchinese.html",
+    "ico": "📚",
+    "domain": "historylines.net"
+  },
+  {
+    "category": "study",
+    "name": "USGS - 美国地质勘探局",
+    "url": "https://www.usgs.gov/",
+    "ico": "📚",
+    "domain": "usgs.gov"
+  },
+  {
+    "category": "study",
+    "name": "人类是宇宙最高等文明？ - 知乎",
+    "url": "https://www.zhihu.com/question/275244312/answer/560901930",
+    "ico": "📚",
+    "domain": "zhihu.com"
+  },
+  {
+    "category": "study",
+    "name": "Home | Brilliant",
+    "url": "https://brilliant.org/home/",
+    "ico": "📚",
+    "domain": "brilliant.org"
+  },
+  {
+    "category": "study",
+    "name": "Khan Academy | Free Online Courses, Lessons & Practice",
+    "url": "https://www.khanacademy.org/",
+    "ico": "📚",
+    "domain": "khanacademy.org"
+  },
+  {
+    "category": "study",
+    "name": "Mathigon",
+    "url": "https://mathigon.org/",
+    "ico": "📚",
+    "domain": "mathigon.org"
+  },
+  {
+    "category": "study",
+    "name": "Classes | Khan Academy",
+    "url": "https://www.khanacademy.org/teacher/dashboard",
+    "ico": "📚",
+    "domain": "khanacademy.org"
+  },
+  {
+    "category": "study",
+    "name": "新东方雅思 | 模考列表",
+    "url": "https://ieltscat.xdf.cn/mock?code=69dcb895-ebc1-4241-970f-60a9d8ab5bdc&state=",
+    "ico": "📚",
+    "domain": "ieltscat.xdf.cn"
+  },
+  {
+    "category": "study",
+    "name": "耶鲁大学公开课：博弈论-导论-五个入门结论 -网易公开课",
+    "url": "https://open.163.com/newview/movie/free?pid=M6GOEJOME&mid=M7KDCISOB",
+    "ico": "📚",
+    "domain": "open.163.com"
+  },
+  {
+    "category": "study",
+    "name": "博弈论_首都师范大学_中国大学MOOC(慕课)",
+    "url": "https://www.icourse163.org/course/CNU-1001600006",
+    "ico": "📚",
+    "domain": "icourse163.org"
+  },
+  {
+    "category": "study",
+    "name": "A2 Key for Schools preparation | Cambridge English",
+    "url": "https://www.cambridgeenglish.org/exams-and-tests/key-for-schools/preparation/",
+    "ico": "📚",
+    "domain": "cambridgeenglish.org"
+  },
+  {
+    "category": "government",
+    "name": "个人信用信息服务平台",
+    "url": "https://ipcrs.pbccrc.org.cn/",
+    "ico": "🏛️",
+    "domain": "ipcrs.pbccrc.org.cn"
+  },
+  {
+    "category": "government",
+    "name": "湖北政务服务网 (企业受理)",
+    "url": "http://zwfw.hubei.gov.cn/webview/wssb/gongshang/qysl.html?transactCode=11429021MB151283343420131001W0001",
+    "ico": "🏛️",
+    "domain": "zwfw.hubei.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "国家政务服务平台 审批事项",
+    "url": "http://gjzwfw.www.gov.cn/fwmh/item/item_11420100MB155256043420131001W0001.do",
+    "ico": "🏛️",
+    "domain": "gjzwfw.www.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "统计数据--湖北省统计局",
+    "url": "https://tjj.hubei.gov.cn/tjsj/",
+    "ico": "🏛️",
+    "domain": "tjj.hubei.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "武汉住房公积金管理中心",
+    "url": "http://gjj.wuhan.gov.cn/",
+    "ico": "🏛️",
+    "domain": "gjj.wuhan.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "中国版权登记业务平台",
+    "url": "https://register.ccopyright.com.cn/registration.html#/index",
+    "ico": "🏛️",
+    "domain": "register.ccopyright.com.cn"
+  },
+  {
+    "category": "government",
+    "name": "湖北省人社厅大学生创业扶持项目管理平台",
+    "url": "http://hbdcxm.hb12333.com/main/index.jsp",
+    "ico": "🏛️",
+    "domain": "hbdcxm.hb12333.com"
+  },
+  {
+    "category": "government",
+    "name": "武汉中小企业公共服务平台",
+    "url": "https://www.whsme.net.cn/new/index.html",
+    "ico": "🏛️",
+    "domain": "whsme.net.cn"
+  },
+  {
+    "category": "government",
+    "name": "单位网厅登录 - 湖北医保公共服务",
+    "url": "https://ybj.hubei.gov.cn/hubeiHallSt/web/hallEnter/#/unitLogin",
+    "ico": "🏛️",
+    "domain": "ybj.hubei.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "United States Patent and Trademark Office",
+    "url": "https://www.uspto.gov/",
+    "ico": "🏛️",
+    "domain": "www.uspto.gov"
+  },
+  {
+    "category": "government",
+    "name": "武汉掌上人才",
+    "url": "https://www.whzsrc.com/whzsrc/index",
+    "ico": "🏛️",
+    "domain": "www.whzsrc.com"
+  },
+  {
+    "category": "government",
+    "name": "南京市人才安居信息服务平台",
+    "url": "http://rcaj.nanjing.gov.cn/zhzbweb/a?login",
+    "ico": "🏛️",
+    "domain": "rcaj.nanjing.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "科学技术部政务服务平台",
+    "url": "https://fuwu.most.gov.cn/govserviceplatform/dynamic/switch/channelpage?page=%2Fhtml&isFirst=first",
+    "ico": "🏛️",
+    "domain": "fuwu.most.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "科技型中小企业评价系统",
+    "url": "https://tsme.chinatorch.org.cn/techBased/a/index",
+    "ico": "🏛️",
+    "domain": "tsme.chinatorch.org.cn"
+  },
+  {
+    "category": "government",
+    "name": "武汉市经济和信息化局",
+    "url": "http://jxj.wuhan.gov.cn/xwzx_9/tztg/202210/t20221018_2061390.html",
+    "ico": "🏛️",
+    "domain": "jxj.wuhan.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "优质中小企业梯度培育平台",
+    "url": "https://zjtx.miit.gov.cn/zxqySy/main",
+    "ico": "🏛️",
+    "domain": "zjtx.miit.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "优质中小企业梯度培育平台-企业信息管理",
+    "url": "https://zjtx.miit.gov.cn/zxqySy/qyxxgl?lx=3&cssSsoTicket=6c6d40ca285146a681d656c98b4d9e6e",
+    "ico": "🏛️",
+    "domain": "zjtx.miit.gov.cn"
+  },
+  {
+    "category": "government",
+    "name": "武汉市科创局办事大厅",
+    "url": "http://58.48.28.151:88/dataform?formViewType=add&formCode=249129232ccb4baf&isClose=true&appItemType=WorkflowList&isWorkflow=true&openstyle=0",
+    "ico": "🏛️",
+    "domain": "58.48.28.151"
+  },
+  {
+    "category": "tool",
+    "name": "LZL在线工具箱",
+    "url": "https://lzltool.cn/",
+    "ico": "🛠️",
+    "domain": "lzltool.cn"
+  },
+  {
+    "category": "tool",
+    "name": "MikuTools - 轻量工具集合",
+    "url": "https://tools.miku.ac/",
+    "ico": "🛠️",
+    "domain": "tools.miku.ac"
+  },
+  {
+    "category": "tool",
+    "name": "报名工具 - 活动表单收款",
+    "url": "https://www.baominggongju.com/manage",
+    "ico": "🛠️",
+    "domain": "baominggongju.com"
+  },
+  {
+    "category": "tool",
+    "name": "新知云",
+    "url": "https://www.xinzhiyun.net/User/Center/index",
+    "ico": "🛠️",
+    "domain": "xinzhiyun.net"
+  },
+  {
+    "category": "tool",
+    "name": "湖北政务服务网",
+    "url": "http://zwfw.hubei.gov.cn/webview/apply/sbIndex.html",
+    "ico": "🛠️",
+    "domain": "zwfw.hubei.gov.cn"
+  },
+  {
+    "category": "tool",
+    "name": "麦田艺术 - 高清名画免费下载",
+    "url": "https://www.nbfox.com/",
+    "ico": "🛠️",
+    "domain": "nbfox.com"
+  },
+  {
+    "category": "tool",
+    "name": "书伴 - 你的电子书伴侣",
+    "url": "https://bookfere.com/",
+    "ico": "🛠️",
+    "domain": "bookfere.com"
+  },
+  {
+    "category": "download",
+    "name": "Downr - 免费视频下载器",
+    "url": "https://downr.org/",
+    "ico": "⬇️",
+    "domain": "downr.org"
+  },
+  {
+    "category": "download",
+    "name": "DownSub - 字幕下载",
+    "url": "https://downsub.com/",
+    "ico": "⬇️",
+    "domain": "downsub.com"
+  },
+  {
+    "category": "download",
+    "name": "夸克资源吧 - 纪录片频道",
+    "url": "https://pan168.cn/doco",
+    "ico": "⬇️",
+    "domain": "pan168.cn"
+  },
+  {
+    "category": "download",
+    "name": "赔钱机场 (VPN)",
+    "url": "https://xn--mes358aby2apfg.com/#/plan/5",
+    "ico": "⬇️",
+    "domain": "xn--mes358aby2apfg.com"
+  },
+  {
+    "category": "finance",
+    "name": "COMEX黄金(GC00Y) - 东方财富",
+    "url": "https://quote.eastmoney.com/globalfuture/GC00Y.html",
+    "ico": "💹",
+    "domain": "quote.eastmoney.com"
+  },
+  {
+    "category": "content",
+    "name": "腾讯视频创作平台",
+    "url": "https://mp.v.qq.com/homepage",
+    "ico": "📺",
+    "domain": "mp.v.qq.com"
+  },
+  {
+    "category": "content",
+    "name": "爱奇艺iQ号 - 爱创作",
+    "url": "https://mp.iqiyi.com/knowledge/index",
+    "ico": "📺",
+    "domain": "mp.iqiyi.com"
+  },
+  {
+    "category": "content",
+    "name": "优酷内容开放平台",
+    "url": "https://om.youku.com/view/main/index?openCategory=177",
+    "ico": "📺",
+    "domain": "om.youku.com"
+  },
+  {
+    "category": "content",
+    "name": "爱壹帆 - 海量高清视频",
+    "url": "https://www.iyf.tv/",
+    "ico": "📺",
+    "domain": "iyf.tv"
+  },
+  {
+    "category": "content",
+    "name": "X (Twitter) 首页",
+    "url": "https://x.com/home",
+    "ico": "📺",
+    "domain": "x.com"
+  },
+  {
+    "category": "content",
+    "name": "Complexly - 科普内容机构",
+    "url": "https://complexly.com/",
+    "ico": "📺",
+    "domain": "complexly.com"
+  },
+  {
+    "category": "content",
+    "name": "翻转电台 Flipradio",
+    "url": "https://www.flipradio.club/",
+    "ico": "📺",
+    "domain": "flipradio.club"
+  },
+  {
+    "category": "content",
+    "name": "Chilam Club",
+    "url": "https://www.chilam.club/",
+    "ico": "📺",
+    "domain": "chilam.club"
+  },
+  {
     "category": "ai",
     "name": "Google AI Studio",
     "url": "https://aistudio.google.com/prompts/new_chat",
