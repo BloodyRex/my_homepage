@@ -1,0 +1,463 @@
+// 个人书签主页 - 主逻辑脚本
+// 数据驱动渲染，支持分类编辑和一键导出
+
+// ==================== 全局配置 ====================
+const categoryDisplayNames = {
+  'ai': 'AI工具',
+  'video': '视频创作',
+  'content': '内容平台',
+  'tool': '实用工具',
+  'download': '下载资源',
+  'finance': '金融投资',
+  'study': '学习知识',
+  'music': '音乐娱乐',
+  'youtube': 'Youtube素材',
+  'government': '政务办公',
+  'design': '设计素材',
+  'shopping': '购物消费',
+  'science': '自然科学',
+  'audio': '乐器与音频',
+  'local': '澳洲本地',
+  'other': '其他'
+};
+
+// 所有分类列表
+const allCategories = Object.keys(categoryDisplayNames);
+
+// 当前数据存储（从links.json加载，用户编辑时更新）
+let currentLinksData = [];
+
+// ==================== 数据加载与渲染 ====================
+
+// 从links.json加载数据
+async function loadLinksData() {
+  try {
+    const response = await fetch('links.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    currentLinksData = data;
+    return data;
+  } catch (error) {
+    console.error('加载links.json失败:', error);
+    alert('❌ 无法加载书签数据，请确保links.json文件存在');
+    return [];
+  }
+}
+
+// 渲染卡片到对应分类区域
+function renderLinks(data) {
+  // 1. 清空所有区域
+  document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
+
+  // 2. 按分类分发卡片
+  data.forEach(item => {
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = item.url;
+    card.target = "_blank";
+    card.innerHTML = `
+      <div class="card-ico">${item.ico || '🌐'}</div>
+      <div class="card-info">
+        <div class="card-name">${item.name}</div>
+        <div class="card-domain">${item.domain || new URL(item.url).hostname}</div>
+      </div>
+      <span class="card-arrow">→</span>
+    `;
+
+    const targetSection = document.querySelector(`.cat-${item.category} .cards-grid`);
+    if (targetSection) {
+      targetSection.appendChild(card);
+    }
+  });
+
+  // 3. 更新统计数字和UI
+  updateCategoryCounts();
+  addCategoryTagsToCards();
+  setupCardCategoryEditing();
+  setupSearch();
+  setupSidebarFilter();
+}
+
+// ==================== 统计与UI更新 ====================
+
+// 更新分类计数（包括侧边栏和标题）
+function updateCategoryCounts() {
+  // 更新每个分类的计数
+  document.querySelectorAll('.section').forEach(sec => {
+    const cat = sec.dataset.section;
+    const count = sec.querySelectorAll('.card').length;
+    const el = document.getElementById('count-' + cat);
+    if (el) el.textContent = count;
+
+    // 更新侧边栏计数
+    const sidebarCountEl = document.getElementById('sidebar-count-' + cat);
+    if (sidebarCountEl) sidebarCountEl.textContent = count;
+
+    // 如果该分类没有卡片，则隐藏整个section
+    sec.style.display = count > 0 ? 'block' : 'none';
+  });
+
+  // 更新总计数
+  const total = document.querySelectorAll('.card').length;
+  const totalCountEl = document.getElementById('totalCount');
+  if (totalCountEl) totalCountEl.textContent = total;
+
+  const sidebarAllCountEl = document.getElementById('sidebar-count-all');
+  if (sidebarAllCountEl) sidebarAllCountEl.textContent = total;
+}
+
+// ==================== 卡片分类编辑功能 ====================
+
+// 为卡片添加分类标签和下拉菜单
+function addCategoryTagsToCards() {
+  document.querySelectorAll('.card').forEach(card => {
+    // 如果已经添加过标签，跳过
+    if (card.querySelector('.card-category-tag')) return;
+
+    // 查找父section分类
+    const section = card.closest('.section');
+    if (!section) return;
+    const cat = section.dataset.section;
+    const displayName = categoryDisplayNames[cat] || cat;
+
+    // 创建标签元素
+    const tag = document.createElement('div');
+    tag.className = 'card-category-tag';
+    tag.textContent = displayName;
+    tag.dataset.category = cat;
+
+    // 创建下拉菜单
+    const dropdown = document.createElement('div');
+    dropdown.className = 'card-category-dropdown';
+
+    // 添加所有分类选项
+    Object.entries(categoryDisplayNames).forEach(([id, name]) => {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = name;
+      link.dataset.category = id;
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        moveCardToCategory(card, id);
+        dropdown.classList.remove('show');
+        card.classList.remove('show-dropdown');
+      });
+      dropdown.appendChild(link);
+    });
+
+    // 相对定位
+    card.style.position = 'relative';
+    card.appendChild(tag);
+    card.appendChild(dropdown);
+  });
+}
+
+// 设置卡片分类编辑事件
+function setupCardCategoryEditing() {
+  document.querySelectorAll('.card').forEach(card => {
+    const tag = card.querySelector('.card-category-tag');
+    const dropdown = card.querySelector('.card-category-dropdown');
+
+    if (!tag || !dropdown) return;
+
+    // 标签点击切换下拉菜单
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 隐藏所有其他下拉菜单
+      document.querySelectorAll('.card-category-dropdown.show').forEach(d => {
+        if (d !== dropdown) {
+          d.classList.remove('show');
+          d.closest('.card')?.classList.remove('show-dropdown');
+        }
+      });
+
+      const isShowing = dropdown.classList.toggle('show');
+      card.classList.toggle('show-dropdown', isShowing);
+    });
+  });
+
+  // 点击页面其他地方关闭下拉菜单
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.card-category-dropdown.show').forEach(d => {
+      d.classList.remove('show');
+      d.closest('.card')?.classList.remove('show-dropdown');
+    });
+  });
+}
+
+// 将卡片移动到新分类
+function moveCardToCategory(card, newCategory) {
+  const section = card.closest('.section');
+  if (!section) return;
+
+  const oldCategory = section.dataset.section;
+  if (oldCategory === newCategory) return;
+
+  const newSection = document.querySelector(`.section[data-section="${newCategory}"]`);
+  if (!newSection) return;
+
+  const cardsGrid = newSection.querySelector('.cards-grid');
+  if (!cardsGrid) return;
+
+  // 移动DOM元素
+  cardsGrid.appendChild(card);
+
+  // 更新标签显示
+  const tag = card.querySelector('.card-category-tag');
+  if (tag) {
+    tag.textContent = categoryDisplayNames[newCategory] || newCategory;
+    tag.dataset.category = newCategory;
+  }
+
+  // 更新统计
+  updateCategoryCounts();
+
+  // 保存到localStorage（页面刷新后保持状态）
+  const cardUrl = card.getAttribute('href');
+  if (cardUrl) {
+    saveCardCategoryToStorage(cardUrl, newCategory);
+  }
+
+  // 更新currentLinksData
+  updateCardCategoryInData(cardUrl, newCategory);
+}
+
+// 保存分类到localStorage
+function saveCardCategoryToStorage(cardUrl, category) {
+  const savedCategories = JSON.parse(localStorage.getItem('cardCategories') || '{}');
+  savedCategories[cardUrl] = category;
+  localStorage.setItem('cardCategories', JSON.stringify(savedCategories));
+}
+
+// 从localStorage恢复分类
+function restoreCardCategoriesFromStorage() {
+  const savedCategories = JSON.parse(localStorage.getItem('cardCategories') || '{}');
+
+  document.querySelectorAll('.card').forEach(card => {
+    const cardUrl = card.getAttribute('href');
+    if (cardUrl && savedCategories.hasOwnProperty(cardUrl)) {
+      const category = savedCategories[cardUrl];
+      const targetSection = document.querySelector(`.section[data-section="${category}"]`);
+      if (targetSection) {
+        const cardsGrid = targetSection.querySelector('.cards-grid');
+        const currentCardsGrid = card.closest('.cards-grid');
+        if (cardsGrid && currentCardsGrid && cardsGrid !== currentCardsGrid) {
+          cardsGrid.appendChild(card);
+        }
+      }
+    }
+  });
+
+  updateCategoryCounts();
+}
+
+// 更新currentLinksData中的卡片分类
+function updateCardCategoryInData(cardUrl, newCategory) {
+  const index = currentLinksData.findIndex(item => item.url === cardUrl);
+  if (index !== -1) {
+    currentLinksData[index].category = newCategory;
+  }
+}
+
+// ==================== 搜索功能 ====================
+
+function setupSearch() {
+  const searchInput = document.getElementById('search');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+
+    if (!query) {
+      // 清空搜索，恢复过滤状态
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('search-hidden'));
+      const activeFilter = document.querySelector('.filter-btn.active')?.dataset.cat || 'all';
+      document.querySelectorAll('.section').forEach(sec => {
+        if (activeFilter === 'all' || sec.dataset.section === activeFilter) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+      return;
+    }
+
+    // 搜索时显示所有section
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('hidden'));
+
+    // 根据搜索关键词显示/隐藏卡片
+    document.querySelectorAll('.card').forEach(card => {
+      const name = card.querySelector('.card-name')?.textContent.toLowerCase() || '';
+      const domain = card.querySelector('.card-domain')?.textContent.toLowerCase() || '';
+      const href = (card.getAttribute('href') || '').toLowerCase();
+
+      if (name.includes(query) || domain.includes(query) || href.includes(query)) {
+        card.classList.remove('search-hidden');
+      } else {
+        card.classList.add('search-hidden');
+      }
+    });
+
+    // 隐藏没有可见卡片的section
+    document.querySelectorAll('.section').forEach(sec => {
+      const visible = [...sec.querySelectorAll('.card')].some(c => !c.classList.contains('search-hidden'));
+      sec.classList.toggle('hidden', !visible);
+    });
+  });
+}
+
+// ==================== 侧边栏过滤 ====================
+
+function setupSidebarFilter() {
+  const sidebarCategories = document.querySelectorAll('.sidebar-category');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+
+  // 侧边栏点击事件
+  sidebarCategories.forEach(catEl => {
+    catEl.addEventListener('click', () => {
+      sidebarCategories.forEach(c => c.classList.remove('active'));
+      catEl.classList.add('active');
+      const cat = catEl.dataset.cat;
+
+      // 触发对应的filter按钮点击
+      const correspondingBtn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+      if (correspondingBtn) correspondingBtn.click();
+    });
+  });
+
+  // 原始filter按钮事件（隐藏的）
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+
+      document.querySelectorAll('.section').forEach(sec => {
+        if (cat === 'all' || sec.dataset.section === cat) {
+          sec.classList.remove('hidden');
+        } else {
+          sec.classList.add('hidden');
+        }
+      });
+
+      // 清空搜索
+      document.getElementById('search').value = '';
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('search-hidden'));
+    });
+  });
+
+  // 同步侧边栏和filter按钮的激活状态
+  const activeFilterBtn = document.querySelector('.filter-btn.active');
+  if (activeFilterBtn) {
+    const activeCat = activeFilterBtn.dataset.cat;
+    document.querySelectorAll('.sidebar-category').forEach(catEl => {
+      catEl.classList.toggle('active', catEl.dataset.cat === activeCat);
+    });
+  }
+}
+
+// ==================== 导出功能 ====================
+
+// 根据当前DOM状态生成新的JSON数据
+function generateUpdatedJSON() {
+  const updatedData = [];
+
+  // 遍历所有分类section
+  document.querySelectorAll('.section').forEach(section => {
+    const category = section.dataset.section;
+
+    // 遍历该分类下的所有卡片
+    section.querySelectorAll('.card').forEach(card => {
+      const url = card.getAttribute('href');
+      const name = card.querySelector('.card-name')?.textContent || '';
+      const domain = card.querySelector('.card-domain')?.textContent || '';
+      const ico = card.querySelector('.card-ico')?.textContent || '📌';
+
+      // 从currentLinksData中查找原始数据，保留其他字段
+      const originalItem = currentLinksData.find(item => item.url === url);
+
+      updatedData.push({
+        category: category,
+        name: name,
+        url: url,
+        domain: domain,
+        ico: ico,
+        // 保留其他字段（如果有）
+        ...(originalItem ? {
+          // 可以在这里保留其他字段，如description等
+        } : {})
+      });
+    });
+  });
+
+  return updatedData;
+}
+
+// 导出JSON文件
+function exportNewJSON() {
+  const updatedData = generateUpdatedJSON();
+  const dataStr = JSON.stringify(updatedData, null, 2);
+  const blob = new Blob([dataStr], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = "links_updated.json";
+  a.click();
+
+  setTimeout(() => {
+    URL.revokeObjectURL(url);
+    alert("✅ 调整后的书签数据已导出为 links_updated.json！");
+  }, 100);
+}
+
+// ==================== 子章节切换 ====================
+
+function toggleSubsection(id) {
+  const content = document.getElementById('content-' + id);
+  const arrow = document.getElementById('arrow-' + id);
+  if (content.style.display === 'none') {
+    content.style.display = 'grid';
+    arrow.textContent = '▼';
+  } else {
+    content.style.display = 'none';
+    arrow.textContent = '▶';
+  }
+}
+
+// ==================== 初始化 ====================
+
+async function init() {
+  try {
+    // 加载数据
+    const data = await loadLinksData();
+
+    // 渲染卡片
+    renderLinks(data);
+
+    // 从localStorage恢复分类
+    restoreCardCategoriesFromStorage();
+
+    // 设置导出按钮事件
+    const exportBtn = document.querySelector('.export-fab');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', exportNewJSON);
+    }
+
+    console.log('✅ 个人书签主页初始化完成');
+  } catch (error) {
+    console.error('初始化失败:', error);
+    alert('❌ 页面初始化失败，请检查控制台错误信息');
+  }
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', init);
+
+// 全局导出函数（用于HTML内联调用）
+window.toggleSubsection = toggleSubsection;
+window.exportNewJSON = exportNewJSON;
