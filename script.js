@@ -31,6 +31,7 @@ let currentLinksData = [];
 
 // 从links.json加载数据
 async function loadLinksData() {
+  // 优先使用fetch API
   try {
     const response = await fetch('links.json');
     if (!response.ok) {
@@ -39,17 +40,54 @@ async function loadLinksData() {
     const data = await response.json();
     currentLinksData = data;
     return data;
-  } catch (error) {
-    console.error('加载links.json失败:', error);
-    alert('❌ 无法加载书签数据，请确保links.json文件存在');
+  } catch (fetchError) {
+    console.warn('Fetch API失败，尝试使用XMLHttpRequest:', fetchError);
+
+    // 如果是file://协议，使用同步XMLHttpRequest作为回退
+    if (window.location.protocol === 'file:') {
+      try {
+        const data = loadLocalFileSync('links.json');
+        if (data) {
+          currentLinksData = data;
+          return data;
+        }
+      } catch (xhrError) {
+        console.error('XMLHttpRequest也失败:', xhrError);
+      }
+    }
+
+    console.error('加载links.json失败:', fetchError);
+    alert('❌ 无法加载书签数据，请确保links.json文件存在\n\n💡 提示：如果直接在本地打开HTML文件，请使用HTTP服务器（如Python的 "python -m http.server"）');
     return [];
+  }
+}
+
+// 同步加载本地文件（仅用于file://协议回退）
+function loadLocalFileSync(filePath) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', filePath, false); // 同步请求
+  xhr.send(null);
+
+  if (xhr.status === 200 || xhr.status === 0) { // 0表示本地文件
+    try {
+      return JSON.parse(xhr.responseText);
+    } catch (parseError) {
+      throw new Error(`解析JSON失败: ${parseError.message}`);
+    }
+  } else {
+    throw new Error(`XMLHttpRequest错误，状态码: ${xhr.status}`);
   }
 }
 
 // 渲染卡片到对应分类区域
 function renderLinks(data) {
-  // 1. 清空所有区域
-  document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
+  // 1. 清空所有动态加载的区域（排除硬编码的youtube分类）
+  document.querySelectorAll('.cards-grid').forEach(grid => {
+    const section = grid.closest('.section');
+    if (section && section.dataset.section !== 'youtube') {
+      grid.innerHTML = '';
+    }
+  });
 
   // 2. 按分类分发卡片
   data.forEach(item => {
@@ -433,19 +471,25 @@ function toggleSubsection(id) {
 
 async function init() {
   try {
+    console.log('🚀 开始初始化个人书签主页...');
+
     // 加载数据
     const data = await loadLinksData();
+    console.log(`📊 加载 ${data.length} 条书签数据`);
 
     // 渲染卡片
     renderLinks(data);
+    console.log('🎨 卡片渲染完成');
 
     // 从localStorage恢复分类
     restoreCardCategoriesFromStorage();
+    console.log('💾 分类状态恢复完成');
 
     // 设置导出按钮事件
     const exportBtn = document.querySelector('.export-fab');
     if (exportBtn) {
       exportBtn.addEventListener('click', exportNewJSON);
+      console.log('📤 导出按钮事件绑定完成');
     }
 
     console.log('✅ 个人书签主页初始化完成');
