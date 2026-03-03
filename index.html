@@ -648,7 +648,69 @@
     .subsection .cards-grid {
       width: 100%;
     }
+/* 卡片右上角分类标签 */
+.card-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
 
+.card-tag:hover {
+  background: var(--accent-ai);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 右下角导出按钮 */
+.export-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: var(--accent-ai);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+
+.export-fab:hover {
+  transform: scale(1.1);
+}
+
+.export-fab::after {
+  content: '导出JSON';
+  position: absolute;
+  right: 70px;
+  background: #1e293b;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.export-fab:hover::after {
+  opacity: 1;
+}
   </style>
 </head>
 <body>
@@ -1853,72 +1915,82 @@
       arrow.textContent = '▶';
     }
   }
-</script>
 <script>
-  // 1. 页面加载完成后立即获取数据
+  let localLinksData = [];
+
+  // 页面初始化
   document.addEventListener('DOMContentLoaded', () => {
     fetch('links.json')
-      .then(response => {
-        if (!response.ok) throw new Error('无法加载 links.json');
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        renderLinks(data);
+        localLinksData = data;
+        renderLinks(localLinksData);
       })
       .catch(err => console.error('加载出错:', err));
   });
 
-  // 2. 将 JSON 数据转化为 HTML 卡片
+  // 核心渲染逻辑
   function renderLinks(links) {
-    links.forEach(link => {
-      // 查找对应分类的容器
+    document.querySelectorAll('.cards-grid').forEach(grid => grid.innerHTML = '');
+    
+    links.forEach((link, index) => {
       const container = document.querySelector(`.cat-${link.category} .cards-grid`);
-      
       if (container) {
         const cardHTML = `
-          <a class="card" href="${link.url}" target="_blank">
-            <div class="card-ico">${link.ico}</div>
-            <div class="card-info">
-              <div class="card-name">${link.name}</div>
-              <div class="card-domain">${link.domain}</div>
-            </div>
-            <span class="card-arrow">→</span>
-          </a>
+          <div class="card-wrapper" style="position: relative;">
+            <div class="card-tag" onclick="changeCategory(event, ${index})">${link.category}</div>
+            <a class="card" href="${link.url}" target="_blank">
+              <div class="card-ico">${link.ico}</div>
+              <div class="card-info">
+                <div class="card-name">${link.name}</div>
+                <div class="card-domain">${link.domain}</div>
+              </div>
+              <span class="card-arrow">→</span>
+            </a>
+          </div>
         `;
         container.insertAdjacentHTML('beforeend', cardHTML);
       }
     });
-    
-    // 渲染完成后，立即刷新所有计数器
     updateStats();
   }
 
-  // 3. 统计功能函数（适配你的 HTML 结构）
-  function updateStats() {
-    // A. 更新顶部总数 (对应你的 id="totalCount")
-    const total = document.querySelectorAll('.card').length;
-    const totalEl = document.getElementById('totalCount');
-    if (totalEl) totalEl.textContent = total;
-
-    // B. 定义所有分类 ID
+  // 交互：修改分类
+  function changeCategory(event, index) {
+    event.preventDefault();
     const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
-
-    categories.forEach(cat => {
-      // 算出该分类下有多少个卡片
-      const count = document.querySelectorAll(`.cat-${cat} .card`).length;
-
-      // 更新侧边栏计数 (对应 id="sidebar-count-xxx")
-      const sidebarEl = document.getElementById(`sidebar-count-${cat}`);
-      if (sidebarEl) sidebarEl.textContent = count;
-
-      // 更新分类标题旁的计数 (对应 id="count-xxx")
-      const titleEl = document.getElementById(`count-${cat}`);
-      if (titleEl) titleEl.textContent = count;
-    });
-
-    // 更新侧边栏“全部”计数
-    const sidebarAll = document.getElementById('sidebar-count-all');
-    if (sidebarAll) sidebarAll.textContent = total;
+    const newCat = prompt("请输入新分类ID:", localLinksData[index].category);
+    if (newCat && categories.includes(newCat)) {
+      localLinksData[index].category = newCat;
+      renderLinks(localLinksData);
+    }
   }
-</script></body>
+
+  // 交互：导出 JSON
+  function exportNewJSON() {
+    const dataStr = JSON.stringify(localLinksData, null, 2);
+    const blob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "links.json";
+    a.click();
+    alert("下载完成，请上传至 GitHub 覆盖！");
+  }
+
+  // 统计逻辑
+  function updateStats() {
+    const total = document.querySelectorAll('.card').length;
+    if (document.getElementById('totalCount')) document.getElementById('totalCount').textContent = total;
+    
+    const categories = ['ai', 'video', 'content', 'tool', 'download', 'finance', 'study', 'music', 'government', 'design', 'shopping', 'science', 'audio', 'local', 'other', 'youtube'];
+    categories.forEach(cat => {
+      const count = document.querySelectorAll(`.cat-${cat} .card`).length;
+      if (document.getElementById(`sidebar-count-${cat}`)) document.getElementById(`sidebar-count-${cat}`).textContent = count;
+      if (document.getElementById(`count-${cat}`)) document.getElementById(`count-${cat}`).textContent = count;
+    });
+  }
+</script>
+<div class="export-fab" onclick="exportNewJSON()">💾</div>
+</body>
 </html>
