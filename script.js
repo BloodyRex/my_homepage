@@ -29,6 +29,26 @@ const categoryDisplayNames = {
   'other': '其他'
 };
 
+// 分类对应的图标映射
+const categoryIcons = {
+  'ai': '🤖',
+  'video': '🎬',
+  'content': '📺',
+  'tool': '🛠️',
+  'download': '⬇️',
+  'finance': '💹',
+  'study': '📚',
+  'music': '🎵',
+  'youtube': '🎥',
+  'government': '🏛️',
+  'design': '🎨',
+  'shopping': '🛍️',
+  'science': '🧬',
+  'audio': '🎸',
+  'local': '🦘',
+  'other': '📌'
+};
+
 // 所有分类列表
 const allCategories = Object.keys(categoryDisplayNames);
 
@@ -256,8 +276,14 @@ function moveCardToCategory(card, newCategory) {
   // 更新标签显示
   const tag = card.querySelector('.card-category-tag');
   if (tag) {
-    tag.textContent = categoryDisplayNames[newCategory] || newCategory;
+    tag.textContent = displayName;
     tag.dataset.category = newCategory;
+  }
+
+  // ✅ 更新卡片图标 (Fix Bug 1)
+  const icoEl = card.querySelector('.card-ico');
+  if (icoEl) {
+    icoEl.textContent = categoryIcons[newCategory] || '🌐';
   }
 
   // 更新统计
@@ -458,10 +484,122 @@ function exportNewJSON() {
   a.download = "links_updated.json";
   a.click();
 
+  // 释放资源
   setTimeout(() => {
     URL.revokeObjectURL(url);
-    alert("✅ 调整后的书签数据已导出为 links_updated.json！");
   }, 100);
+}
+
+// ==================== 新增网址功能 ====================
+
+// 初始化弹窗逻辑
+function initModal() {
+  const modal = document.getElementById('addModal');
+  const addBtn = document.getElementById('addBtn');
+  const closeBtns = document.querySelectorAll('.close-modal');
+  const saveBtn = document.getElementById('saveBtn');
+  const categorySelect = document.getElementById('newCategory');
+
+  if (!modal || !addBtn) return;
+
+  // 填充分类下拉菜单
+  categorySelect.innerHTML = Object.entries(categoryDisplayNames)
+    .map(([id, name]) => `<option value="${id}">${name}</option>`)
+    .join('');
+
+  // 打开弹窗
+  addBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    // 重置输入
+    document.getElementById('newUrl').value = '';
+    document.getElementById('newName').value = '';
+  });
+
+  // 关闭弹窗
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  });
+
+  // 点击外部关闭
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // 保存逻辑
+  saveBtn.addEventListener('click', () => {
+    const url = document.getElementById('newUrl').value.trim();
+    const name = document.getElementById('newName').value.trim();
+    const category = categorySelect.value;
+
+    if (!url || !name) {
+      alert('⚠️ 请填写完整的网址和名称');
+      return;
+    }
+
+    try {
+      // 检查URL合法性
+      new URL(url);
+    } catch (e) {
+      alert('❌ 网址格式不正确，请包含 http:// 或 https://');
+      return;
+    }
+
+    addNewLink(url, name, category);
+    modal.style.display = 'none';
+
+    // 自动导出新JSON
+    setTimeout(() => {
+      exportNewJSON();
+      alert('✅ 网址已添加成功，并已自动导出 links_updated.json\n\n请手动替换原始文件以永久生效。');
+    }, 500);
+  });
+}
+
+// 添加新卡片到DOM和数据
+function addNewLink(url, name, category) {
+  const domain = new URL(url).hostname;
+  const ico = categoryIcons[category] || '🌐';
+
+  const newItem = {
+    url,
+    name,
+    category,
+    domain,
+    ico
+  };
+
+  // 添加到当前数据
+  currentLinksData.push(newItem);
+
+  // 渲染新卡片
+  const card = document.createElement('a');
+  card.className = 'card';
+  card.href = url;
+  card.target = "_blank";
+  card.innerHTML = `
+    <div class="card-ico">${ico}</div>
+    <div class="card-info">
+      <div class="card-name">${name}</div>
+      <div class="card-domain">${domain}</div>
+    </div>
+    <span class="card-arrow">→</span>
+  `;
+
+  const targetSection = document.querySelector(`.cat-${category} .cards-grid`);
+  if (targetSection) {
+    targetSection.appendChild(card);
+    // 同时也移除no-items类
+    targetSection.closest('.section').classList.remove('no-items');
+  }
+
+  // 刷新增强功能
+  addCategoryTagsToCards();
+  setupCardCategoryEditing();
+  updateCategoryCounts();
 }
 
 // ==================== 子章节切换 ====================
@@ -500,11 +638,14 @@ function initUI() {
     const exportBtn = document.querySelector('.export-fab');
     if (exportBtn) {
       console.log('找到导出按钮，绑定点击事件');
+      // 先移除可能存在的监听器，防止重复
+      exportBtn.removeEventListener('click', exportNewJSON);
       exportBtn.addEventListener('click', exportNewJSON);
       console.log('📤 导出按钮事件绑定完成');
-    } else {
-      console.error('❌ 未找到导出按钮元素！');
     }
+
+    // 初始化弹窗
+    initModal();
 
     console.log('✅ UI组件初始化完成');
   } catch (error) {
