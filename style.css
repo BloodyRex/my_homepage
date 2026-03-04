@@ -956,6 +956,11 @@
       border-color: var(--accent-ai);
     }
 
+    .form-group select option {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
     .modal-footer {
       padding: 20px 24px;
       border-top: 1px solid var(--border);

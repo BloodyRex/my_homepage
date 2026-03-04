@@ -2,7 +2,7 @@
 // 数据驱动渲染，支持分类编辑和一键导出
 
 // 全局错误处理
-window.addEventListener('error', function(event) {
+window.addEventListener('error', function (event) {
   console.error('🌐 全局JavaScript错误:', event.error);
 });
 
@@ -274,13 +274,14 @@ function moveCardToCategory(card, newCategory) {
   cardsGrid.appendChild(card);
 
   // 更新标签显示
+  const displayName = categoryDisplayNames[newCategory] || newCategory;
   const tag = card.querySelector('.card-category-tag');
   if (tag) {
     tag.textContent = displayName;
     tag.dataset.category = newCategory;
   }
 
-  // ✅ 更新卡片图标 (Fix Bug 1)
+  // ✅ 更新卡片图标 (Fix Bug 2)
   const icoEl = card.querySelector('.card-ico');
   if (icoEl) {
     icoEl.textContent = categoryIcons[newCategory] || '🌐';
